@@ -1,6 +1,27 @@
 import Footer from "@/components/ui/footer";
 import Header from "@/components/ui/header";
 import "./globals.css";
+import localFont from "next/font/local";
+
+const Switzer = localFont({
+  src: [
+    {
+      path: "./fonts/Switzer-Regular.otf",
+      weight: "400",
+      style: "normal",
+    },
+  ],
+});
+
+const poppins = localFont({
+  src: [
+    {
+      path: "./fonts/Poppins-Regular.ttf",
+      weight: "400",
+      style: "normal",
+    },
+  ],
+});
 
 export default function RootLayout({
   children,
@@ -9,7 +30,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`antialiased`}>
+      <body className={`antialiased ${poppins.className}`}>
         <Header />
         {children}
         <Footer />
