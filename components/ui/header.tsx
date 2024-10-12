@@ -23,7 +23,7 @@ const Header = () => {
   const [data, setData]: any = useState(null);
 
   useEffect(() => {
-    fetch("https://mdnhs.github.io/masum-json/siteInfo.json")
+    fetch("https://mdnhs.github.io/masum-json/header.json")
       .then((res) => res.json())
       .then(setData);
   }, []);

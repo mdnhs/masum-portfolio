@@ -10,7 +10,7 @@ const Hero = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    fetch("https://mdnhs.github.io/masum-json/siteInfo.json")
+    fetch("https://mdnhs.github.io/masum-json/about.json")
       .then((res) => res.json())
       .then(setData);
     setIsLoading(false);
@@ -29,7 +29,7 @@ const Hero = () => {
               <Image
                 src={data?.profilePicture}
                 fill
-                className="w-full h-full"
+                className="w-full h-full transition-all duration-300 hover:scale-110"
                 alt="Picture of the author"
               />
             </div>
@@ -44,28 +44,28 @@ const Hero = () => {
               <Link
                 href={data?.socials[0]?.gitHub ?? "/"}
                 target="_blank"
-                className="flex gap-2"
+                className="flex gap-2 hover:text-blue-600"
               >
                 <Github />
               </Link>
               <Link
                 href={data?.socials[0]?.facebook ?? "/"}
                 target="_blank"
-                className="flex gap-2"
+                className="flex gap-2 hover:text-blue-600"
               >
                 <Facebook />
               </Link>
               <Link
                 href={data?.socials[0]?.linkedIn ?? "/"}
                 target="_blank"
-                className="flex gap-2"
+                className="flex gap-2 hover:text-blue-600"
               >
                 <Linkedin />
               </Link>
               <Link
                 href={data?.socials[0]?.insta ?? "/"}
                 target="_blank"
-                className="flex gap-2"
+                className="flex gap-2 hover:text-blue-600"
               >
                 <Instagram />
               </Link>
@@ -75,23 +75,9 @@ const Hero = () => {
       </div>
       <div className=" col-span-full lg:col-span-7 flex h-full items-center justify-start">
         <div className=" lg:basis-2/3 space-y-3 lg:pl-40 p-5 lg:p-0">
-          <p className="text-4xl lg:text-7xl font-bold">Hey! There.</p>
-          <p className="text-xl lg:text-2xl font-bold">
-            {
-              "My name's Md Masum. A Data Analyst and a Data Science enthusiast."
-            }
-          </p>
-          <p>
-            {`I'm a data analyst with experience in Data Visualization, Data
-            Analysis, and Data Modeling using tools such as Excel, PowerBI, SQL,
-            LookerStudio and techniques like,Statistical Analysis, Regression
-            Analysis and Machine learning. I have worked with diverse datasets
-            in industries including Sales, finance, healthcare, and e-commerce
-            and is adept at communicating data-driven insights to technical and
-            non-technical audiences. I'm passionate about keeping up with the
-            latest developments in data field and seeking out new challenges to
-            grow my skills.`}
-          </p>
+          <p className="text-4xl lg:text-7xl font-bold">{data?.bioHeadings}</p>
+          <p className="text-xl lg:text-2xl font-bold">{data?.bioTitle}</p>
+          <p>{data?.bioDetails}</p>
         </div>
       </div>
     </div>
