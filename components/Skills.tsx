@@ -2,16 +2,7 @@
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 
-const skill = [
-  { id: 1, name: "html" },
-  { id: 2, name: "html" },
-  { id: 3, name: "html" },
-  { id: 4, name: "html" },
-  { id: 5, name: "html" },
-  { id: 6, name: "html" },
-  { id: 7, name: "html" },
-  { id: 8, name: "html" },
-];
+
 
 const Skills = () => {
   const [data, setData]: any = useState(null);
