@@ -10,7 +10,7 @@ const page = () => {
         <span className="w-5 h-5 bg-blue-600"></span>
         <p className=" font-bold text-xl lg:text-3xl">{`Resume`}</p>
       </div>
-      <div className="w-[750px] space-y-6">
+      <div className="w-full lg:w-[750px] space-y-6">
         {" "}
         <div className="flex justify-between items-center">
           <p className="font-bold text-lg lg:text-2xl">Experience</p>
@@ -20,14 +20,14 @@ const page = () => {
         </div>
         <ResumeCard />
       </div>
-      <div className="w-[750px] space-y-6">
+      <div className="w-full lg:w-[750px] space-y-6">
         {" "}
         <div className="flex justify-between items-center">
           <p className="font-bold text-lg lg:text-2xl">Education</p>
         </div>
         <ResumeCard />
       </div>
-      <div className="w-[750px] space-y-6">
+      <div className="w-full lg:w-[750px] space-y-6">
         {" "}
         <div className="flex justify-between items-center">
           <p className="font-bold text-lg lg:text-2xl">Skills</p>

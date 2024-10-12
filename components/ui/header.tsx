@@ -31,8 +31,9 @@ const Header = () => {
             <p className=" font-bold text-xl lg:text-3xl"> Md Masum</p>
           </div>
 
-          <p className="pt-2">
-            <span className="pt-2 pr-3">/</span>Data Analyst
+          <p className="lg:pt-2">
+            <span className="pt-2 pr-3 invisible lg:visible">/</span>Data
+            Analyst
           </p>
         </Link>
         <div className="lg:flex items-center gap-4 hidden">

@@ -1,8 +1,8 @@
 const ResumeCard = () => {
   return (
-    <div className="w-[750px] min-h-[439px] bg-white p-10 relative gap-5 grid grid-cols-2">
+    <div className="w-full lg:w-[750px] min-h-[439px] bg-white p-10 relative gap-5 grid grid-cols-2">
       <span className="w-2 h-12 bg-blue-600 absolute left-0 top-7"></span>
-      <div className="space-y-5 col-span-1">
+      <div className="space-y-5 col-span-full lg:col-span-1">
         <p className="text-xl font-extrabold text-blue-600">2023 - Present</p>
         <div>
           <p className="font-semibold">Associate Data Analyst</p>
@@ -10,7 +10,7 @@ const ResumeCard = () => {
           <p className=" text-sm">Gulshan-2, Dhaka-1212</p>
         </div>
       </div>
-      <div className=" col-span-1 ">
+      <div className=" col-span-full lg:col-span-1">
         <p className=" text-justify">{`This is a 4 years of a Super store sales data. Used Tools:
 i) Power Query. ii) Merge. iii) Data cleaning.
 iv) Modeling. v) Custom Column.
