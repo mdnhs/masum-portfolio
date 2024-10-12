@@ -4,14 +4,13 @@ import emailjs from "@emailjs/browser";
 import { Button } from "./ui/button";
 
 const ContactUs = () => {
-  const formRef = useRef(null); // Initialize with null to prevent undefined
+  const formRef = useRef(null);
   const [formStatus, setFormStatus] = useState("");
 
-  const sendEmail = (e: any) => {
+  const sendEmail = (e: { preventDefault: () => void }) => {
     e.preventDefault();
 
     if (formRef.current) {
-      // Ensure formRef.current is not null/undefined
       emailjs
         .sendForm(
           "service_4xckkqc", // Replace with your EmailJS Service ID
@@ -23,7 +22,7 @@ const ContactUs = () => {
           (result) => {
             console.log(result.text);
             setFormStatus("Message sent successfully!");
-            formRef.current.reset(); // Optionally reset form after successful send
+            // formRef.current.reset();
           },
           (error) => {
             console.log(error.text);
