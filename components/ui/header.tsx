@@ -22,7 +22,10 @@ const Header = () => {
   return (
     <div className="bg-white h-20 lg:h-32 sticky z-50 top-0">
       <div className="h-full w-full flex items-center justify-between px-5 container">
-        <div className="flex flex-col md:flex-row md:gap-3 items-center align-middle">
+        <Link
+          href={"/"}
+          className="flex flex-col md:flex-row md:gap-3 items-center align-middle"
+        >
           <div className="flex gap-3 items-center align-middle">
             <span className="w-5 h-5 bg-blue-500"></span>
             <p className=" font-bold text-xl lg:text-3xl"> Md Masum</p>
@@ -31,7 +34,7 @@ const Header = () => {
           <p className="pt-2">
             <span className="pt-2 pr-3">/</span>Data Analyst
           </p>
-        </div>
+        </Link>
         <div className="lg:flex items-center gap-4 hidden">
           {navList.map((item, index) => {
             return (
