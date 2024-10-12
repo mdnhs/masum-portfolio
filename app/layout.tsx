@@ -3,15 +3,6 @@ import Header from "@/components/ui/header";
 import "./globals.css";
 import localFont from "next/font/local";
 
-const Switzer = localFont({
-  src: [
-    {
-      path: "./fonts/Switzer-Regular.otf",
-      weight: "400",
-      style: "normal",
-    },
-  ],
-});
 
 const poppins = localFont({
   src: [
