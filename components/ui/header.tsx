@@ -27,7 +27,7 @@ const Header = () => {
           className="flex flex-col md:flex-row md:gap-3 items-center align-middle"
         >
           <div className="flex gap-3 items-center align-middle">
-            <span className="w-5 h-5 bg-blue-500"></span>
+            <span className="w-5 h-5 bg-blue-600"></span>
             <p className=" font-bold text-xl lg:text-3xl"> Md Masum</p>
           </div>
 
@@ -41,8 +41,8 @@ const Header = () => {
               <Link
                 href={item.url}
                 key={index + "navList"}
-                className={`hover:text-blue-500 cursor-pointer ${
-                  pathName === item.url ? "text-blue-500" : ""
+                className={`hover:text-blue-600 cursor-pointer ${
+                  pathName === item.url ? "text-blue-600" : ""
                 }`}
               >
                 {item.name}
@@ -62,8 +62,8 @@ const Header = () => {
                     <Link
                       href={item.url}
                       key={index + "navList"}
-                      className={`hover:text-blue-500 cursor-pointer ${
-                        pathName === item.url ? "text-blue-500" : ""
+                      className={`hover:text-blue-600 cursor-pointer ${
+                        pathName === item.url ? "text-blue-600" : ""
                       }`}
                     >
                       {item.name}

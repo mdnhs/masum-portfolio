@@ -35,7 +35,7 @@ const ContactUs = () => {
   };
 
   return (
-    <div className="grid grid-cols-2 bg-white gap-6 p-10 shadow-2xl">
+    <div className="grid grid-cols-2 bg-white gap-6 p-5 lg:p-10 shadow-2xl">
       <form
         ref={formRef}
         onSubmit={sendEmail}
@@ -45,38 +45,38 @@ const ContactUs = () => {
           type="text"
           name="first_name"
           placeholder="First Name*"
-          className="col-span-1 border-b-2 border-gray-500 focus:border-blue-500 outline-none py-2"
+          className="col-span-1 border-b-2 border-gray-500 focus:border-blue-600 outline-none py-2"
           required
         />
         <input
           type="text"
           name="last_name"
           placeholder="Last Name*"
-          className="col-span-1 border-b-2 border-gray-500 focus:border-blue-500 outline-none py-2"
+          className="col-span-1 border-b-2 border-gray-500 focus:border-blue-600 outline-none py-2"
           required
         />
         <input
           type="email"
           name="email"
           placeholder="Email*"
-          className="col-span-2 border-b-2 border-gray-500 focus:border-blue-500 outline-none py-2"
+          className="col-span-2 border-b-2 border-gray-500 focus:border-blue-600 outline-none py-2"
           required
         />
         <input
           type="text"
           name="subject"
           placeholder="Subject*"
-          className="col-span-2 border-b-2 border-gray-500 focus:border-blue-500 outline-none py-2"
+          className="col-span-2 border-b-2 border-gray-500 focus:border-blue-600 outline-none py-2"
         />
         <textarea
           name="message"
           placeholder="Message*"
-          className="col-span-2 border-b-2 border-gray-500 focus:border-blue-500 outline-none py-2 min-h-40"
+          className="col-span-2 border-b-2 border-gray-500 focus:border-blue-600 outline-none py-2 min-h-40"
           required
         />
         <Button
           type="submit"
-          className="bg-blue-500 rounded-full font-semibold hover:bg-white hover:text-blue-500 hover:border-2 py-3 w-28 border-blue-500"
+          className="bg-blue-600 rounded-full font-semibold hover:bg-white hover:text-blue-600 hover:border-2 py-3 w-28 border-blue-600"
         >
           Send
         </Button>

@@ -9,7 +9,7 @@ const Hero = () => {
           <div className="h-[85%] flex justify-center items-center gap-5 flex-col p-10">
             <div className="h-60 w-60 rounded-full bg-red-200"></div>
             <p className="font-bold text-3xl w-full text-center">Md Masum</p>
-            <span className="h-[2px] w-10 bg-blue-500"></span>
+            <span className="h-[2px] w-10 bg-blue-600"></span>
             <p className="font-light text-center">
               Data Analyst, Data Science Enthusiast
             </p>
