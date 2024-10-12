@@ -15,7 +15,7 @@ const Skills = () => {
   return (
     <div className="grid grid-cols-12 gap-5 lg:gap-16 py-10 lg:py-0 px-5 container">
       <div className=" col-span-full lg:col-span-5">
-        <p className="font-extrabold text-3xl drop-shadow-lg w-full text-center lg:text-end pt-10">
+        <p className="font-extrabold text-3xl drop-shadow-lg w-full text-center lg:text-end">
           TECHNICAL SKILLS
         </p>
       </div>

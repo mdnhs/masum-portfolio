@@ -33,7 +33,7 @@ const Hero = () => {
             }
           </p>
           <p>
-            I'm a data analyst with experience in Data Visualization, Data
+            {`I'm a data analyst with experience in Data Visualization, Data
             Analysis, and Data Modeling using tools such as Excel, PowerBI, SQL,
             LookerStudio and techniques like,Statistical Analysis, Regression
             Analysis and Machine learning. I have worked with diverse datasets
@@ -41,7 +41,7 @@ const Hero = () => {
             and is adept at communicating data-driven insights to technical and
             non-technical audiences. I'm passionate about keeping up with the
             latest developments in data field and seeking out new challenges to
-            grow my skills.
+            grow my skills.`}
           </p>
         </div>
       </div>
