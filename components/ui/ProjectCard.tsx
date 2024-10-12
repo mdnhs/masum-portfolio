@@ -1,6 +1,6 @@
 const ProjectCard = () => {
   return (
-    <div className="w-full lg:w-[750px] lg:h-[439px] bg-white p-5 relative gap-5 grid grid-cols-2 container">
+    <div className="w-full lg:w-[750px] min-h-[439px] bg-white p-5 relative gap-5 grid grid-cols-2 container">
       <span className="w-2 h-12 bg-blue-600 absolute left-0 top-16"></span>
       <div className="space-y-5 col-span-full lg:col-span-1">
         <p className="text-3xl font-black text-blue-600">Category</p>

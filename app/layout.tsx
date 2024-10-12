@@ -2,7 +2,12 @@ import Footer from "@/components/ui/footer";
 import Header from "@/components/ui/header";
 import "./globals.css";
 import localFont from "next/font/local";
+import { Metadata } from "next";
 
+export const metadata: Metadata = {
+  title: "Masum | Data Data Analyst",
+  description: "Data Analyst",
+};
 
 const poppins = localFont({
   src: [
