@@ -20,14 +20,13 @@ const navList = [
 
 const Header = () => {
   const pathName = usePathname();
-  const [data, setData] = useState(null);
+  const [data, setData]: any = useState(null);
 
   useEffect(() => {
     fetch("https://mdnhs.github.io/masum-json/siteInfo.json")
       .then((res) => res.json())
       .then(setData);
   }, []);
-  console.log(data);
   return (
     <div className="bg-white h-20 lg:h-32 sticky z-50 top-0">
       <div className="h-full w-full flex items-center justify-between px-5 container">
@@ -37,12 +36,12 @@ const Header = () => {
         >
           <div className="flex gap-3 items-center align-middle">
             <span className="w-5 h-5 bg-blue-600"></span>
-            <p className=" font-bold text-xl lg:text-3xl"> Md Masum</p>
+            <p className=" font-bold text-xl lg:text-3xl">{data?.name}</p>
           </div>
 
           <p className="lg:pt-2">
-            <span className="pt-2 pr-3 invisible lg:visible">/</span>Data
-            Analyst
+            <span className="pt-2 pr-3 invisible lg:visible">/</span>
+            {data?.designation}
           </p>
         </Link>
         <div className="lg:flex items-center gap-4 hidden">
