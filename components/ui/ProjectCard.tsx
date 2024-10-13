@@ -27,7 +27,7 @@ const ProjectCard = (props: ProjectsType) => {
           <div className="w-[454px] h-[288px] relative bg-black ">
             {" "}
             {
-              <Carousel autoSlide={true}>
+              <Carousel autoSlide={false}>
                 {[
                   ...props?.projectPhoto.map((item, index) => {
                     return (
