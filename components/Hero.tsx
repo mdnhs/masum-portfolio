@@ -4,20 +4,40 @@ import { Facebook, Github, Instagram, Linkedin } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
+// Define the structure of the social links
+interface SocialLinks {
+  gitHub?: string;
+  facebook?: string;
+  linkedIn?: string;
+  insta?: string;
+}
+
+// Define the structure of the data object
+interface HeroData {
+  profilePicture: string;
+  name: string;
+  designation: string;
+  socials: SocialLinks[];
+  bioHeadings: string;
+  bioTitle: string;
+  bioDetails: string;
+}
+
 const Hero = () => {
-  const [data, setData]: any = useState(null);
+  const [data, setData] = useState<HeroData | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
     fetch("https://mdnhs.github.io/masum-json/about.json")
       .then((res) => res.json())
-      .then(setData);
-    setIsLoading(false);
+      .then(setData)
+      .finally(() => setIsLoading(false));
   }, []);
+
   return (
     <div className="grid grid-cols-12 lg:h-screen">
-      <div className=" col-span-full lg:col-span-5 bg-orange-100 relative h-[600px] lg:h-full">
+      <div className="col-span-full lg:col-span-5 bg-orange-100 relative h-[600px] lg:h-full">
         <div className="h-[535px] w-full lg:w-[375px] bg-orange-100 shadow-2xl absolute lg:-right-28 top-7 lg:top-48">
           <div className="h-[85%] flex justify-center items-center gap-5 flex-col p-10">
             <div
@@ -25,12 +45,11 @@ const Hero = () => {
                 isLoading ? "animate-pulse" : ""
               }`}
             >
-              {" "}
               <Image
-                src={data?.profilePicture}
+                src={data?.profilePicture || "/placeholder.jpg"}
                 fill
                 className="w-full h-full transition-all duration-300 hover:scale-110"
-                alt="Picture of the author"
+                alt="Profile Picture"
               />
             </div>
             <p className="font-bold text-3xl w-full text-center">
@@ -73,8 +92,8 @@ const Hero = () => {
           </div>
         </div>
       </div>
-      <div className=" col-span-full lg:col-span-7 flex h-full items-center justify-start">
-        <div className=" lg:basis-2/3 space-y-3 lg:pl-40 p-5 lg:p-0">
+      <div className="col-span-full lg:col-span-7 flex h-full items-center justify-start">
+        <div className="lg:basis-2/3 space-y-3 lg:pl-40 p-5 lg:p-0">
           <p className="text-4xl lg:text-7xl font-bold">{data?.bioHeadings}</p>
           <p className="text-xl lg:text-2xl font-bold">{data?.bioTitle}</p>
           <p>{data?.bioDetails}</p>

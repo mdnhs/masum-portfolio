@@ -3,17 +3,21 @@ import { Mail, Phone } from "lucide-react";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
+// Define the structure of the data object
+interface FooterData {
+  mail: string;
+  phone: string;
+}
+
 const Footer = () => {
-  const [data, setData]: any = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [data, setData] = useState<FooterData | null>(null);
 
   useEffect(() => {
-    setIsLoading(true);
     fetch("https://mdnhs.github.io/masum-json/footer.json")
       .then((res) => res.json())
-      .then(setData);
-    setIsLoading(false);
+      .then((data: FooterData) => setData(data));
   }, []);
+
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 container px-5 h-fit lg:h-32 bg-white w-full py-10 lg:py-0">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-0">
@@ -25,7 +29,7 @@ const Footer = () => {
               </div>
               <p>Write</p>
             </div>
-            <Link href={`mailto:${data?.mail}`} className=" italic text-xl">
+            <Link href={`mailto:${data?.mail}`} className="italic text-xl">
               {data?.mail}
             </Link>
           </div>
@@ -38,7 +42,7 @@ const Footer = () => {
               </div>
               <p>Call</p>
             </div>
-            <Link href={`tel:${data?.phone}`} className=" italic text-xl">
+            <Link href={`tel:${data?.phone}`} className="italic text-xl">
               {data?.phone}
             </Link>
           </div>
