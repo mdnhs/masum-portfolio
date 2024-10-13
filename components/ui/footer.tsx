@@ -29,7 +29,7 @@ const Footer = () => {
               </div>
               <p>Write</p>
             </div>
-            <Link href={`mailto:${data?.mail}`} className="italic text-xl">
+            <Link href={`mailto:${data?.mail}`} className="italic text-xl hover:text-blue-600">
               {data?.mail}
             </Link>
           </div>
@@ -42,7 +42,7 @@ const Footer = () => {
               </div>
               <p>Call</p>
             </div>
-            <Link href={`tel:${data?.phone}`} className="italic text-xl">
+            <Link href={`tel:${data?.phone}`} className="italic text-xl hover:text-blue-600">
               {data?.phone}
             </Link>
           </div>

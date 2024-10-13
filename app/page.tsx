@@ -6,7 +6,6 @@ export default function Home() {
     <div className=" space-y-20">
       <Hero />
       <Skills />
-     
     </div>
   );
 }

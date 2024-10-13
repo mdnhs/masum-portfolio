@@ -1,5 +1,4 @@
-import ProjectCard from "@/components/ui/ProjectCard";
-import React from "react";
+import ProjectContainer from "@/components/ProjectContainer";
 
 const page = () => {
   return (
@@ -14,7 +13,7 @@ const page = () => {
         <br />
         Browse through the page to see all of my works.{" "}
       </p>
-      <ProjectCard />
+      <ProjectContainer />
     </div>
   );
 };

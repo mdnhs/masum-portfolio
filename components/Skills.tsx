@@ -13,7 +13,6 @@ interface Data {
 }
 
 const Skills = () => {
-  // Use the defined types instead of 'any'
   const [data, setData] = useState<Data | null>(null);
 
   useEffect(() => {
@@ -36,7 +35,7 @@ const Skills = () => {
             className="w-full h-40 bg-white text-center flex justify-center items-center relative"
           >
             <Image
-              src={item?.image}
+              src={item?.image ?? "/images/placeholder.webp"}
               fill
               className="w-full h-full transition-all duration-300 hover:scale-110 object-contain"
               alt="Skill"

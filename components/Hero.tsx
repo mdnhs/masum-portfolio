@@ -46,9 +46,9 @@ const Hero = () => {
               }`}
             >
               <Image
-                src={data?.profilePicture || "/placeholder.jpg"}
+                src={data?.profilePicture ?? "/images/placeholder.webp"}
                 fill
-                className="w-full h-full transition-all duration-300 hover:scale-110"
+                className="w-full h-full object-contain transition-all duration-300 hover:scale-110"
                 alt="Profile Picture"
               />
             </div>
