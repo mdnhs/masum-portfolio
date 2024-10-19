@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Carousel from "./InlineGallery";
-import DOMPurify from "dompurify";
+import DOMPurify from "isomorphic-dompurify";
 
 interface ProjectsType {
   projectTitle: string;

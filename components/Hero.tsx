@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Facebook, Github, Instagram, Linkedin } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import DOMPurify from "dompurify";
+import DOMPurify from "isomorphic-dompurify";
 
 // Define the structure of the social links
 interface SocialLinks {
