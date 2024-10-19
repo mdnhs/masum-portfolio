@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Facebook, Github, Instagram, Linkedin } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import DOMPurify from "dompurify";
 
 // Define the structure of the social links
 interface SocialLinks {
@@ -96,7 +97,11 @@ const Hero = () => {
         <div className="lg:basis-2/3 space-y-3 lg:pl-40 p-5 lg:p-0">
           <p className="text-4xl lg:text-7xl font-bold">{data?.bioHeadings}</p>
           <p className="text-xl lg:text-2xl font-bold">{data?.bioTitle}</p>
-          <p>{data?.bioDetails}</p>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: DOMPurify.sanitize(data?.bioDetails ?? ""),
+            }}
+          />
         </div>
       </div>
     </div>

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Carousel from "./InlineGallery";
+import DOMPurify from "dompurify";
 
 interface ProjectsType {
   projectTitle: string;
@@ -20,7 +21,12 @@ const ProjectCard = (props: ProjectsType) => {
         <p className="text-xl font-extrabold text-blue-600">
           {props.projectTitle}
         </p>
-        <p className="text-justify">{props.projectDetails}</p>
+        <p
+          className="text-justify"
+          dangerouslySetInnerHTML={{
+            __html: DOMPurify.sanitize(props?.projectDetails ?? ""),
+          }}
+        />
       </div>
       <div className="col-span-full lg:col-span-1 relative">
         <div className="lg:absolute w-full lg:w-[454px] h-[288px] max-h-[288px] lg:left-0 lg:bottom-5 shadow-2xl overflow-hidden">
