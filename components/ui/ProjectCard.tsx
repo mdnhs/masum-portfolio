@@ -21,7 +21,7 @@ const ProjectCard = (props: ProjectsType) => {
         <p className="text-xl font-extrabold text-blue-600">
           {props.projectTitle}
         </p>
-        <p
+        <div
           className="text-justify"
           dangerouslySetInnerHTML={{
             __html: DOMPurify.sanitize(props?.projectDetails ?? ""),
