@@ -10,7 +10,14 @@ interface RichTextEditorProps {
   onChange: (html: string) => void;
 }
 
-const RichTextEditor: React.FC<RichTextEditorProps> = ({ onChange }) => {
+interface QuillModules {
+  toolbar: (string | object)[];
+}
+
+const RichTextEditor: React.FC<RichTextEditorProps> & {
+  modules: QuillModules; // Define modules type
+  formats: string[];      // Define formats type
+} = ({ onChange }) => {
   const [editorHtml, setEditorHtml] = useState<string>("");
 
   const handleChange = (html: string) => {
@@ -37,6 +44,7 @@ RichTextEditor.modules = {
     [{ header: [1, 2, false] }],
     ["bold", "italic", "underline"],
     ["link", "image"],
+    [{ list: "ordered" }, { list: "bullet" }], // Corrected list configuration
     ["clean"], // remove formatting button
   ],
 };
@@ -48,6 +56,7 @@ RichTextEditor.formats = [
   "underline",
   "link",
   "image",
+  "list",   // Added to formats
 ];
 
 export default RichTextEditor;
