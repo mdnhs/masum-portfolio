@@ -62,7 +62,7 @@ const ResumeContainer = () => {
                 href={item.cvDownloadLink}
                 target="_blank"
               >
-                <Button className=" uppercase bg-blue-600 hover:border border-blue-600 hover:bg-white hover:text-blue-600 rounded-full font-semibold">
+                <Button className=" uppercase bg-blue-600 hover:border border-blue-600 hover:bg-white hover:text-blue-600 rounded-full font-semibold dark:text-white hover:dark:text-slate-900">
                   Download CV
                 </Button>
               </Link>

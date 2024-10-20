@@ -37,7 +37,7 @@ const ContactUs = () => {
   return (
     <div
       data-aos="zoom-in-down"
-      className="grid grid-cols-2 bg-white gap-6 p-5 lg:p-10 shadow-2xl"
+      className="grid grid-cols-2 bg-white dark:bg-slate-900 gap-6 p-5 lg:p-10 shadow-2xl"
     >
       <form
         ref={formRef}
@@ -79,7 +79,7 @@ const ContactUs = () => {
         />
         <Button
           type="submit"
-          className="bg-blue-600 rounded-full font-semibold hover:bg-white hover:text-blue-600 hover:border-2 py-3 w-28 border-blue-600"
+          className="bg-blue-600 rounded-full font-semibold hover:bg-white hover:text-blue-600 hover:border-2 py-3 w-28 border-blue-600 dark:text-white hover:dark:text-blue-600"
         >
           Send
         </Button>

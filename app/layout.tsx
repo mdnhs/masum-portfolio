@@ -1,8 +1,9 @@
+import { ThemeProvider } from "@/components/theme-provider";
 import Footer from "@/components/ui/footer";
 import Header from "@/components/ui/header";
-import "./globals.css";
-import localFont from "next/font/local";
 import { Metadata } from "next";
+import localFont from "next/font/local";
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Masum | Data Data Analyst",
@@ -27,9 +28,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`antialiased ${poppins.className}`}>
-        <Header />
-        {children}
-        <Footer />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Header />
+          {children}
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );

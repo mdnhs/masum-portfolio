@@ -16,7 +16,7 @@ interface languagesType {
 
 const SkillCard = (props: SkillCardType) => {
   return (
-    <div className="w-full lg:w-[750px] min-h-[439px] bg-white ">
+    <div className="w-full lg:w-[750px] min-h-[439px] bg-white dark:bg-slate-900">
       <div className="relative gap-5 p-10">
         <span className="w-2 h-12 bg-blue-600 absolute left-0 top-7"></span>
         <div className="space-y-5 col-span-full lg:col-span-1">
@@ -48,7 +48,7 @@ const SkillCard = (props: SkillCardType) => {
           </div>
         </div>
       </div>
-      <div className="w-full bg-white p-10 relative gap-5">
+      <div className="w-full p-10 relative gap-5">
         <span className="w-2 h-12 bg-blue-600 absolute left-0 top-7"></span>
         <div className="space-y-5 col-span-full lg:col-span-1">
           <p className="text-xl font-extrabold text-blue-600">{"Languages"}</p>

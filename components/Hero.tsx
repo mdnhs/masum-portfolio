@@ -40,8 +40,8 @@ const Hero = () => {
 
   return (
     <div className="grid grid-cols-12 lg:h-screen">
-      <div className="col-span-full lg:col-span-5 bg-orange-100 relative h-[600px] lg:h-full">
-        <div className="h-[535px] w-full lg:w-[375px] bg-orange-100 shadow-2xl absolute lg:-right-28 top-7 lg:top-48">
+      <div className="col-span-full lg:col-span-5 bg-orange-100 dark:bg-slate-700 relative h-[600px] lg:h-full">
+        <div className="h-[535px] w-full lg:w-[375px] bg-orange-100 dark:bg-slate-700 shadow-2xl absolute lg:-right-28 top-7 lg:top-48">
           <div className="h-[85%] flex justify-center items-center gap-5 flex-col p-10">
             <div
               data-aos="zoom-in"
@@ -75,7 +75,7 @@ const Hero = () => {
               {data?.designation}
             </p>
           </div>
-          <div className="h-[15%] bg-white flex justify-center items-center">
+          <div className="h-[15%] bg-white dark:bg-slate-900 flex justify-center items-center">
             <div
               data-aos="fade-right"
               data-aos-offset="300"
