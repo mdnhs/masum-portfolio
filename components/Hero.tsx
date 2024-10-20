@@ -45,6 +45,7 @@ const Hero = () => {
           <div className="h-[85%] flex justify-center items-center gap-5 flex-col p-10">
             <div
               data-aos="zoom-in"
+              data-aos-duration="500"
               className={`h-60 w-60 rounded-full bg-white relative overflow-hidden `}
             >
               <Image

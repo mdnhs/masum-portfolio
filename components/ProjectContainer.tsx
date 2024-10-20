@@ -21,15 +21,22 @@ const ProjectContainer = () => {
   return (
     <div className=" space-y-10">
       {data?.map((item: ProjectsType, index) => {
+        const aosAnimation = index % 2 === 0 ? "fade-left" : "fade-right";
         return (
-          <ProjectCard
-            projectTitle={item.projectTitle}
-            projectCategory={item.projectCategory}
-            projectDetails={item.projectDetails}
-            projectPhoto={item.projectPhoto}
-            projectVideo={item.projectVideo}
+          <div
             key={index + "project"}
-          />
+            data-aos={aosAnimation}
+            data-aos-easing="ease-in-sine"
+            data-aos-duration="500"
+          >
+            <ProjectCard
+              projectTitle={item.projectTitle}
+              projectCategory={item.projectCategory}
+              projectDetails={item.projectDetails}
+              projectPhoto={item.projectPhoto}
+              projectVideo={item.projectVideo}
+            />
+          </div>
         );
       })}
     </div>

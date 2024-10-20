@@ -3,7 +3,7 @@ import Skills from "@/components/Skills";
 
 export default function Home() {
   return (
-    <div className=" space-y-20">
+    <div className=" space-y-20 overflow-hidden">
       <Hero />
       <Skills />
     </div>
