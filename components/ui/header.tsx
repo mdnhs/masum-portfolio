@@ -10,6 +10,8 @@ import { AlignJustify } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 // Define a type for the data you're fetching
 interface HeaderData {
@@ -26,7 +28,7 @@ const navList = [
 
 const Header = () => {
   const pathName = usePathname();
-  
+  AOS.init();
   // Use the defined type instead of 'any'
   const [data, setData] = useState<HeaderData | null>(null);
 
@@ -37,7 +39,10 @@ const Header = () => {
   }, []);
 
   return (
-    <div className="bg-white h-20 lg:h-32 sticky z-50 top-0">
+    <div
+      data-aos="flip-down"
+      className="bg-white h-20 lg:h-32 sticky z-50 top-0"
+    >
       <div className="h-full w-full flex items-center justify-between px-5 container">
         <Link
           href={"/"}
