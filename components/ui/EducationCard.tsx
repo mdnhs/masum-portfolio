@@ -1,3 +1,5 @@
+import DOMPurify from "isomorphic-dompurify";
+
 interface EducationCardType {
   educationTimeline: string;
   educationUniversity: string;
@@ -21,7 +23,12 @@ const EducationCard = (props: EducationCardType) => {
         </div>
       </div>
       <div className=" col-span-full lg:col-span-1">
-        <p className=" text-justify">{props.educationDetails}</p>
+        <div
+          className=" text-justify"
+          dangerouslySetInnerHTML={{
+            __html: DOMPurify.sanitize(props?.educationDetails ?? ""),
+          }}
+        />
       </div>
     </div>
   );

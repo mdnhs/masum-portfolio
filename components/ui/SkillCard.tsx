@@ -1,3 +1,5 @@
+import DOMPurify from "isomorphic-dompurify";
+
 interface SkillCardType {
   professionalSkillSet: [];
   languages: [];
@@ -33,7 +35,12 @@ const SkillCard = (props: SkillCardType) => {
                       <span className="w-3 h-3 min-h-[12px] min-w-[12px] bg-blue-600"></span>
                       <p className="font-semibold">{item.skillTitle}</p>
                     </div>
-                    <p className="pl-6 "> {item.skillDetails}</p>
+                    <div
+                      className="pl-6 "
+                      dangerouslySetInnerHTML={{
+                        __html: DOMPurify.sanitize(item?.skillDetails ?? ""),
+                      }}
+                    />
                   </div>
                 );
               }

@@ -1,3 +1,4 @@
+import DOMPurify from "isomorphic-dompurify";
 interface ExperienceCardType {
   experienceTimeline: string;
   experienceDesignation: string;
@@ -21,7 +22,12 @@ const ExperienceCard = (props: ExperienceCardType) => {
         </div>
       </div>
       <div className=" col-span-full lg:col-span-1">
-        <p className=" text-justify">{props.experienceDetails}</p>
+        <p
+          className=" text-justify"
+          dangerouslySetInnerHTML={{
+            __html: DOMPurify.sanitize(props?.experienceDetails ?? ""),
+          }}
+        />
       </div>
     </div>
   );
