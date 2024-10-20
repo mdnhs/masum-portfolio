@@ -1,5 +1,6 @@
 // components/RichTextEditor.tsx
 "use client";
+
 import React, { useState } from "react";
 import dynamic from "next/dynamic";
 import "react-quill/dist/quill.snow.css"; // import styles
@@ -15,8 +16,8 @@ interface QuillModules {
 }
 
 const RichTextEditor: React.FC<RichTextEditorProps> & {
-  modules: QuillModules; // Define modules type
-  formats: string[];      // Define formats type
+  modules: QuillModules;
+  formats: string[];
 } = ({ onChange }) => {
   const [editorHtml, setEditorHtml] = useState<string>("");
 
@@ -38,25 +39,48 @@ const RichTextEditor: React.FC<RichTextEditorProps> & {
   );
 };
 
-// Configure Quill modules and formats
+const colors = ["red", "green", "blue", "orange", "violet"];
+
 RichTextEditor.modules = {
   toolbar: [
-    [{ header: [1, 2, 3, false] }],
-    ["bold", "italic", "underline"],
-    ["link", "image"],
-    [{ list: "ordered" }, { list: "bullet" }], // Corrected list configuration
-    ["clean"], // remove formatting button
+    [{ font: [] }, { size: ["small", false, "large", "huge"] }], // Custom fonts and size
+    ["bold", "italic", "underline", "strike"], // Text formatting options
+    [{ color: colors }, { background: colors }], // Text color and background color
+    [{ script: "sub" }, { script: "super" }], // Subscript/Superscript
+    [{ header: 1 }, { header: 2 }, "blockquote", "code-block"], // Headers and blocks
+    [
+      { list: "ordered" },
+      { list: "bullet" },
+      { indent: "-1" },
+      { indent: "+1" },
+    ], // Lists and indents
+    [{ direction: "rtl" }, { align: ["right", "center", "justify"] }], // Text direction and alignment
+    ["link", "image", "video", "formula"], // Media options
+    ["clean"], // Clear formatting
   ],
 };
 
 RichTextEditor.formats = [
-  "header",
+  "font",
+  "size",
   "bold",
   "italic",
   "underline",
+  "strike",
+  "color",
+  "background",
+  "script",
+  "header",
+  "blockquote",
+  "code-block",
+  "list",
+  "indent",
+  "direction",
+  "align",
   "link",
   "image",
-  "list",   // Added to formats
+  "video",
+  "formula",
 ];
 
 export default RichTextEditor;

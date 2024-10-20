@@ -50,7 +50,7 @@ const Converter: React.FC = () => {
         onSubmit={handleSubmit}
         className="space-y-3 col-span-full md:col-span-1"
       >
-        <div className="space-y-3 h-[340px]">
+        <div className="space-y-3 h-[370px]">
           <label htmlFor="content" className="text-lg font-semibold">
             Type Your Content:
           </label>
@@ -68,7 +68,7 @@ const Converter: React.FC = () => {
 
       <div className="col-span-full md:col-span-1 space-y-3">
         <h2 className="text-lg font-semibold">Converted Content:</h2>
-        <div className="p-4 border rounded-md shadow-sm bg-slate-800 space-y-3 min-h-[352px] relative">
+        <div className="p-4 border rounded-md shadow-sm bg-slate-800 space-y-3 min-h-[383px] relative">
           {cleanedContent && (
             <pre className="whitespace-pre-wrap text-sm text-green-400">
               {JSON.stringify(
@@ -83,7 +83,7 @@ const Converter: React.FC = () => {
           {cleanedContent && (
             <button
               onClick={copyToClipboard}
-              className=" bg-blue-600 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-700 transition duration-200 flex gap-2 text-xs items-center absolute top-1 right-4"
+              className=" bg-blue-600 text-white font-semibold py-1.5 px-2 rounded-md hover:bg-blue-700 transition duration-200 flex gap-2 text-xs items-center absolute top-1 right-4"
             >
               <Copy size={16}/>
               Copy
