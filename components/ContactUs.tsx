@@ -35,7 +35,10 @@ const ContactUs = () => {
   };
 
   return (
-    <div className="grid grid-cols-2 bg-white gap-6 p-5 lg:p-10 shadow-2xl">
+    <div
+      data-aos="zoom-in-down"
+      className="grid grid-cols-2 bg-white gap-6 p-5 lg:p-10 shadow-2xl"
+    >
       <form
         ref={formRef}
         onSubmit={sendEmail}
