@@ -28,7 +28,6 @@ const navList = [
 
 const Header = () => {
   const pathName = usePathname();
-  AOS.init();
   // Use the defined type instead of 'any'
   const [data, setData] = useState<HeaderData | null>(null);
 
@@ -36,6 +35,10 @@ const Header = () => {
     fetch("https://mdnhs.github.io/masum-json/header.json")
       .then((res) => res.json())
       .then(setData);
+
+    if (typeof window !== "undefined") {
+      AOS.init();
+    }
   }, []);
 
   return (

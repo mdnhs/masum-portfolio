@@ -27,28 +27,25 @@ interface HeroData {
 
 const Hero = () => {
   const [data, setData] = useState<HeroData | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
-  AOS.init();
+
   useEffect(() => {
-    setIsLoading(true);
     fetch("https://mdnhs.github.io/masum-json/about.json")
       .then((res) => res.json())
-      .then(setData)
-      .finally(() => setIsLoading(false));
+      .then(setData);
+
+    if (typeof window !== "undefined") {
+      AOS.init();
+    }
   }, []);
 
   return (
     <div className="grid grid-cols-12 lg:h-screen">
-      <div
-        data-aos="zoom-in-right"
-        className="col-span-full lg:col-span-5 bg-orange-100 relative h-[600px] lg:h-full"
-      >
+      <div className="col-span-full lg:col-span-5 bg-orange-100 relative h-[600px] lg:h-full">
         <div className="h-[535px] w-full lg:w-[375px] bg-orange-100 shadow-2xl absolute lg:-right-28 top-7 lg:top-48">
           <div className="h-[85%] flex justify-center items-center gap-5 flex-col p-10">
             <div
-              className={`h-60 w-60 rounded-full bg-white relative overflow-hidden ${
-                isLoading ? "animate-pulse" : ""
-              }`}
+              data-aos="zoom-in"
+              className={`h-60 w-60 rounded-full bg-white relative overflow-hidden `}
             >
               <Image
                 src={data?.profilePicture ?? "/images/placeholder.webp"}

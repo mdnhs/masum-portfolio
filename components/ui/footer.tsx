@@ -13,12 +13,15 @@ interface FooterData {
 
 const Footer = () => {
   const [data, setData] = useState<FooterData | null>(null);
-  AOS.init();
 
   useEffect(() => {
     fetch("https://mdnhs.github.io/masum-json/footer.json")
       .then((res) => res.json())
       .then((data: FooterData) => setData(data));
+
+    if (typeof window !== "undefined") {
+      AOS.init();
+    }
   }, []);
 
   return (

@@ -16,12 +16,15 @@ interface Data {
 
 const Skills = () => {
   const [data, setData] = useState<Data | null>(null);
-  AOS.init();
 
   useEffect(() => {
     fetch("https://mdnhs.github.io/masum-json/about.json")
       .then((res) => res.json())
       .then(setData);
+
+    if (typeof window !== "undefined") {
+      AOS.init();
+    }
   }, []);
 
   return (
