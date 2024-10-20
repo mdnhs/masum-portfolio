@@ -26,7 +26,7 @@ const RichTextEditor: React.FC<RichTextEditorProps> & {
   };
 
   return (
-    <div className="border h-fit rounded-md shadow-sm">
+    <div className="h-fit rounded-md">
       <ReactQuill
         value={editorHtml}
         onChange={handleChange}
@@ -41,7 +41,7 @@ const RichTextEditor: React.FC<RichTextEditorProps> & {
 // Configure Quill modules and formats
 RichTextEditor.modules = {
   toolbar: [
-    [{ header: [1, 2, false] }],
+    [{ header: [1, 2, 3, false] }],
     ["bold", "italic", "underline"],
     ["link", "image"],
     [{ list: "ordered" }, { list: "bullet" }], // Corrected list configuration

@@ -2,8 +2,7 @@ import Converter from "@/components/Converter";
 
 const page = () => {
   return (
-    <div className=" container">
-      Rich Text to JSON
+    <div className=" container h-screen">
       <Converter />
     </div>
   );
