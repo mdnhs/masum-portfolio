@@ -130,12 +130,12 @@ const Hero = () => {
           />
           <div className=" space-x-10 pt-10">
             <Link href={"/projects"}>
-              <Button className=" uppercase bg-white text-slate-900  hover:border dark:border-blue-600 hover:bg-white hover:text-blue-600 rounded-full font-semibold hover:border-blue-600 hover:dark:text-blue-600 px-12 border-slate-900 border">
+              <Button className=" uppercase bg-white text-slate-900  hover:border dark:border-blue-600 hover:bg-white hover:text-blue-600 rounded-full font-semibold hover:border-blue-600 hover:dark:text-blue-600 px-12 border-slate-900 border py-6">
                 Projects
               </Button>
             </Link>
             <Link href={"/resume"}>
-              <Button className=" uppercase bg-blue-600 hover:border border-blue-600 hover:bg-white hover:text-blue-600 rounded-full font-semibold dark:text-white hover:dark:text-slate-900 px-12">
+              <Button className=" uppercase bg-blue-600 hover:border border-blue-600 hover:bg-white hover:text-blue-600 rounded-full font-semibold dark:text-white hover:dark:text-slate-900 px-12 py-6">
                 Resume
               </Button>
             </Link>
