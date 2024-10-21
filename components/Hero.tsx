@@ -6,6 +6,7 @@ import Link from "next/link";
 import DOMPurify from "isomorphic-dompurify";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { Button } from "./ui/button";
 // Define the structure of the social links
 interface SocialLinks {
   gitHub?: string;
@@ -119,7 +120,7 @@ const Hero = () => {
         data-aos="fade-left"
         className="col-span-full lg:col-span-7 flex h-full items-center justify-start"
       >
-        <div className="lg:basis-2/3 space-y-3 lg:pl-40 p-5 lg:p-0">
+        <div className="lg:basis-2/3 space-y-8 lg:pl-40 p-5 lg:p-0">
           <p className="text-4xl lg:text-7xl font-bold">{data?.bioHeadings}</p>
           <p className="text-xl lg:text-2xl font-bold">{data?.bioTitle}</p>
           <div
@@ -127,6 +128,18 @@ const Hero = () => {
               __html: DOMPurify.sanitize(data?.bioDetails ?? ""),
             }}
           />
+          <div className=" space-x-10 pt-10">
+            <Link href={"/projects"}>
+              <Button className=" uppercase bg-white text-slate-900  hover:border dark:border-blue-600 hover:bg-white hover:text-blue-600 rounded-full font-semibold hover:border-blue-600 hover:dark:text-blue-600 px-12 border-slate-900 border">
+                Projects
+              </Button>
+            </Link>
+            <Link href={"/resume"}>
+              <Button className=" uppercase bg-blue-600 hover:border border-blue-600 hover:bg-white hover:text-blue-600 rounded-full font-semibold dark:text-white hover:dark:text-slate-900 px-12">
+                Resume
+              </Button>
+            </Link>
+          </div>
         </div>
       </div>
     </div>

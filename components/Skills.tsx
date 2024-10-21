@@ -46,7 +46,7 @@ const Skills = () => {
         {data?.skills.map((item, index) => (
           <div
             key={index + "skill"}
-            className="w-full h-40 bg-white text-center flex justify-center items-center relative"
+            className="w-full h-40 bg-white rounded-lg text-center overflow-hidden flex justify-center items-center relative"
           >
             <Image
               src={item?.image ?? "/images/placeholder.webp"}
