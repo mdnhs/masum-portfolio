@@ -1,8 +1,6 @@
 "use client";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
 
 // Define a type for skill item
 interface Skill {
@@ -21,10 +19,6 @@ const Skills = () => {
     fetch("https://mdnhs.github.io/masum-json/about.json")
       .then((res) => res.json())
       .then(setData);
-
-    if (typeof window !== "undefined") {
-      AOS.init();
-    }
   }, []);
 
   return (

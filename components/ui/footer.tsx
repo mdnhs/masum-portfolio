@@ -2,8 +2,6 @@
 import { Mail, Phone } from "lucide-react";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
 
 // Define the structure of the data object
 interface FooterData {
@@ -18,10 +16,6 @@ const Footer = () => {
     fetch("https://mdnhs.github.io/masum-json/footer.json")
       .then((res) => res.json())
       .then((data: FooterData) => setData(data));
-
-    if (typeof window !== "undefined") {
-      AOS.init();
-    }
   }, []);
 
   return (

@@ -4,8 +4,6 @@ import { Facebook, Github, Instagram, Linkedin } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import DOMPurify from "isomorphic-dompurify";
-import AOS from "aos";
-import "aos/dist/aos.css";
 import { Button } from "./ui/button";
 // Define the structure of the social links
 interface SocialLinks {
@@ -33,10 +31,6 @@ const Hero = () => {
     fetch("https://mdnhs.github.io/masum-json/about.json")
       .then((res) => res.json())
       .then(setData);
-
-    if (typeof window !== "undefined") {
-      AOS.init();
-    }
   }, []);
 
   return (
@@ -128,7 +122,7 @@ const Hero = () => {
               __html: DOMPurify.sanitize(data?.bioDetails ?? ""),
             }}
           />
-          <div className=" space-x-10 pt-10">
+          <div className=" flex md:flex-row flex-col gap-3 md:gap-10 pt-10">
             <Link href={"/projects"}>
               <Button className=" uppercase bg-white text-slate-900  hover:border dark:border-blue-600 hover:bg-white hover:text-blue-600 rounded-full font-semibold hover:border-blue-600 hover:dark:text-blue-600 px-12 border-slate-900 border py-6">
                 Projects

@@ -10,8 +10,6 @@ import { AlignJustify } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
 import { ModeToggle } from "./ModeToggle";
 
 // Define a type for the data you're fetching
@@ -36,10 +34,6 @@ const Header = () => {
     fetch("https://mdnhs.github.io/masum-json/header.json")
       .then((res) => res.json())
       .then(setData);
-
-    if (typeof window !== "undefined") {
-      AOS.init();
-    }
   }, []);
 
   return (
