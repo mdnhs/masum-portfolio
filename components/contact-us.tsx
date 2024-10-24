@@ -5,6 +5,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { Button } from "./ui/button";
+import { motion } from "framer-motion"; // Importing Framer Motion
 
 // Zod schema for form validation
 const contactSchema = z.object({
@@ -56,74 +57,104 @@ const ContactUs = () => {
   };
 
   return (
-    <div
-      data-aos="zoom-in-down"
+    <motion.div
+      initial={{ opacity: 0, scale: 0.8 }} // Zoom-in effect
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.5 }}
       className="grid grid-cols-2 bg-white dark:bg-slate-900 gap-6 p-5 lg:p-10 shadow-2xl"
     >
       <form
         onSubmit={handleSubmit(sendEmail)}
         className="col-span-2 grid grid-cols-2 gap-6"
       >
-        <input
+        <motion.input
           type="text"
           placeholder="First Name*"
           className="col-span-1 border-b-2 border-gray-500 focus:border-blue-600 outline-none py-2"
           {...register("first_name")}
+          initial={{ opacity: 0, y: -20 }} // Slide in from the top
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
         />
         {errors.first_name && (
           <p className="text-red-500 col-span-2">{errors.first_name.message}</p>
         )}
 
-        <input
+        <motion.input
           type="text"
           placeholder="Last Name*"
           className="col-span-1 border-b-2 border-gray-500 focus:border-blue-600 outline-none py-2"
           {...register("last_name")}
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
         />
         {errors.last_name && (
           <p className="text-red-500 col-span-2">{errors.last_name.message}</p>
         )}
 
-        <input
+        <motion.input
           type="email"
           placeholder="Email*"
           className="col-span-2 border-b-2 border-gray-500 focus:border-blue-600 outline-none py-2"
           {...register("email")}
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
         />
         {errors.email && (
           <p className="text-red-500 col-span-2">{errors.email.message}</p>
         )}
 
-        <input
+        <motion.input
           type="text"
           placeholder="Subject"
           className="col-span-2 border-b-2 border-gray-500 focus:border-blue-600 outline-none py-2"
           {...register("subject")}
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
         />
 
-        <textarea
+        <motion.textarea
           placeholder="Message*"
           className="col-span-2 border-b-2 border-gray-500 focus:border-blue-600 outline-none py-2 min-h-40"
           {...register("message")}
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
         />
         {errors.message && (
           <p className="text-red-500 col-span-2">{errors.message.message}</p>
         )}
 
-        <Button
-          type="submit"
-          disabled={loading}
-          className={`bg-blue-600 rounded-full font-semibold hover:bg-white hover:text-blue-600 hover:border-2 py-3 w-28 border-blue-600 dark:text-white hover:dark:text-blue-600 ${
-            loading ? "cursor-not-allowed" : ""
-          }`}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }} // Button zoom effect
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
         >
-          {loading ? "Sending..." : "Send"}
-        </Button>
+          <Button
+            type="submit"
+            disabled={loading}
+            className={`bg-blue-600 rounded-full font-semibold hover:bg-white hover:text-blue-600 hover:border-2 py-3 w-28 border-blue-600 dark:text-white hover:dark:text-blue-600 ${
+              loading ? "cursor-not-allowed" : ""
+            }`}
+          >
+            {loading ? "Sending..." : "Send"}
+          </Button>
+        </motion.div>
       </form>
       {formStatus && (
-        <p className="col-span-2 mt-4 text-green-500">{formStatus}</p>
+        <motion.p
+          className="col-span-2 mt-4 text-green-500"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.7 }}
+        >
+          {formStatus}
+        </motion.p>
       )}
-    </div>
+    </motion.div>
   );
 };
 

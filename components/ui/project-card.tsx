@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Carousel from "./InlineGallery";
+import Carousel from "./inline-gallery";
 import DOMPurify from "isomorphic-dompurify";
 
 interface ProjectsType {

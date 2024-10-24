@@ -2,6 +2,8 @@ import { MainFooterData } from "@/components/main-footer";
 import { MainNavData } from "@/components/main-nav";
 import { ProjectsType } from "@/components/project-container";
 import { CVType, ResumeType } from "@/components/resume-container";
+import { SiteHeaderData } from "@/components/site-header";
+import { Data } from "@/components/skills";
 import { siteConfig } from "@/config/site";
 
 async function fetchData<T>(endpoint: string): Promise<T> {
@@ -14,7 +16,15 @@ async function fetchData<T>(endpoint: string): Promise<T> {
 
 // Now, use the generic fetch function for each of your API calls
 export const fetchMainNavData = async (): Promise<MainNavData> => {
-  return fetchData<MainNavData>("about.json");
+  return fetchData<MainNavData>("header.json");
+};
+
+export const fetchAboutData = async (): Promise<SiteHeaderData> => {
+  return fetchData<SiteHeaderData>("about.json");
+};
+
+export const fetchTechSkillData = async (): Promise< Data> => {
+  return fetchData<Data>("about.json");
 };
 
 export const fetchMainFooterData = async (): Promise<MainFooterData> => {

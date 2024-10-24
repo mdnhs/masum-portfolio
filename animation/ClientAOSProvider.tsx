@@ -1,28 +1,34 @@
-"use client";
+// "use client";
 
-import { useEffect } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css"; 
+// import { useEffect } from "react";
+// import AOS from "aos";
+// import "aos/dist/aos.css"; 
 
-export default function ClientAOSProvider() {
-  useEffect(() => {
-   
-    AOS.init({
-      disable: function () {
-        return window.innerWidth < 768; 
-      },
-      duration: 1000,
-      once: false, 
-    });
+// export default function ClientAOSProvider() {
+//   useEffect(() => {
+//     AOS.init({
+//       disable: function () {
+//         return window.innerWidth < 768; 
+//       },
+//       duration: 1000,
+//       once: false, 
+//     });
 
-  
-    const handleRouteChange = () => {
-      AOS.refresh();
-    };
+//     // Delay the initial refresh
+//     const timeoutId = setTimeout(() => {
+//       AOS.refresh();
+//     }, 50); // Adjust the delay as necessary
 
-    window.addEventListener("load", handleRouteChange);
-    return () => window.removeEventListener("load", handleRouteChange);
-  }, []);
+//     const handleRouteChange = () => {
+//       AOS.refresh();
+//     };
 
-  return null; 
-}
+//     window.addEventListener("load", handleRouteChange);
+//     return () => {
+//       clearTimeout(timeoutId);
+//       window.removeEventListener("load", handleRouteChange);
+//     };
+//   }, []);
+
+//   return null; 
+// }

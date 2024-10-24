@@ -1,9 +1,9 @@
 "use client";
 import { useEffect, useState } from "react";
 import { Button } from "./ui/button";
-import ExperienceCard from "./ui/ExperienceCard";
-import EducationCard from "./ui/EducationCard";
-import SkillCard, { languagesType, professionalSkillSetType } from "./ui/SkillCard";
+import ExperienceCard from "./ui/experience-card";
+import EducationCard from "./ui/education-card";
+import SkillCard, { languagesType, professionalSkillSetType } from "./ui/skill-card";
 import Link from "next/link";
 import {
   fetchDownloadCVData,
@@ -11,6 +11,7 @@ import {
   fetchExperienceData,
   fetchSkillsData,
 } from "@/api/api";
+import { motion } from "framer-motion"; // Importing Framer Motion
 
 export interface ResumeType {
   experienceTimeline: string;
@@ -62,45 +63,47 @@ const ResumeContainer = () => {
 
   const renderExperience = () =>
     experienceData.map((item, index) => (
-      <div
+      <motion.div
         key={index + `experience-${index}`}
-        data-aos={index % 2 === 0 ? "fade-left" : "fade-right"}
-        data-aos-easing="ease-in-sine"
-        data-aos-duration="500"
+        initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }} // Alternating animations
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.5 }}
       >
         <ExperienceCard {...item} />
-      </div>
+      </motion.div>
     ));
 
   const renderEducation = () =>
     educationData.map((item, index) => (
-      <div
+      <motion.div
         key={index + `education-${index}`}
-        data-aos={index % 2 === 0 ? "fade-left" : "fade-right"}
-        data-aos-easing="ease-in-sine"
-        data-aos-duration="500"
+        initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.5 }}
       >
         <EducationCard {...item} />
-      </div>
+      </motion.div>
     ));
 
   const renderSkills = () =>
     skillData.map((item, index) => (
-      <div
+      <motion.div
         key={index + `skill-${index}`}
-        data-aos={index % 2 === 0 ? "fade-left" : "fade-right"}
-        data-aos-easing="ease-in-sine"
-        data-aos-duration="500"
+        initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.5 }}
       >
         <SkillCard {...item} />
-      </div>
+      </motion.div>
     ));
 
   return (
     <div className="space-y-10">
       <div className="w-full lg:w-[750px] space-y-6">
-        <div
-          data-aos="zoom-in-down"
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
           className="flex justify-between items-center"
         >
           <p className="font-bold text-lg lg:text-2xl">Experience</p>
@@ -115,25 +118,29 @@ const ResumeContainer = () => {
               </Button>
             </Link>
           ))}
-        </div>
+        </motion.div>
         {renderExperience()}
       </div>
       <div className="w-full lg:w-[750px] space-y-6">
-        <div
-          data-aos="zoom-in-down"
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
           className="flex justify-between items-center"
         >
           <p className="font-bold text-lg lg:text-2xl">Education</p>
-        </div>
+        </motion.div>
         {renderEducation()}
       </div>
       <div className="w-full lg:w-[750px] space-y-6">
-        <div
-          data-aos="zoom-in-down"
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
           className="flex justify-between items-center"
         >
           <p className="font-bold text-lg lg:text-2xl">Skills</p>
-        </div>
+        </motion.div>
         {renderSkills()}
       </div>
     </div>

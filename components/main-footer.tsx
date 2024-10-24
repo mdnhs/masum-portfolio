@@ -3,6 +3,7 @@ import { fetchMainFooterData } from "@/api/api";
 import { Mail, Phone } from "lucide-react";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion"; // Import motion from Framer Motion
 
 // Define the structure of the data object
 export interface MainFooterData {
@@ -21,11 +22,17 @@ const MainFooter = () => {
 
     getData();
   }, []);
+
   return (
     <div className="dark:bg-slate-900 bg-white">
-      <div className="grid grid-cols-1 lg:grid-cols-2 container px-5 h-fit dark:bg-slate-900 lg:h-32  w-full py-10 lg:py-0">
+      <div className="grid grid-cols-1 lg:grid-cols-2 container px-5 h-fit dark:bg-slate-900 lg:h-32 w-full py-10 lg:py-0">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-0">
-          <div data-aos="fade-right" className="h-full flex items-center">
+          <motion.div
+            initial={{ opacity: 0, x: -50 }} // Initial state for email section
+            animate={{ opacity: 1, x: 0 }} // Animate to visible
+            transition={{ duration: 0.5 }} // Duration of the animation
+            className="h-full flex items-center"
+          >
             <div>
               <div className="flex gap-2 items-center text-2xl font-bold">
                 <div className="bg-cyan-200 dark:bg-blue-600 rounded-full h-10 w-10 flex items-center justify-center">
@@ -40,8 +47,13 @@ const MainFooter = () => {
                 {data?.mail}
               </Link>
             </div>
-          </div>
-          <div data-aos="fade-left" className="h-full flex items-center">
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, x: 50 }} // Initial state for phone section
+            animate={{ opacity: 1, x: 0 }} // Animate to visible
+            transition={{ duration: 0.5 }} // Duration of the animation
+            className="h-full flex items-center"
+          >
             <div>
               <div className="flex gap-2 items-center text-2xl font-bold">
                 <div className="bg-cyan-200 dark:bg-blue-600 rounded-full h-10 w-10 flex items-center justify-center">
@@ -56,7 +68,7 @@ const MainFooter = () => {
                 {data?.phone}
               </Link>
             </div>
-          </div>
+          </motion.div>
         </div>
         <div></div>
       </div>

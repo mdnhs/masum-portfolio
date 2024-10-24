@@ -1,14 +1,11 @@
 import ContactUs from "@/components/contact-us";
+import PageTitle from "@/components/page-title";
 import React from "react";
 
 const page = () => {
   return (
     <div className="bg-orange-100 flex justify-center items-center p-5 lg:p-20 gap-3 lg:gap-10 flex-col dark:bg-slate-800">
-      {" "}
-      <div data-aos="flip-up" className="flex gap-3 items-center align-middle">
-        <span className="w-5 h-5 bg-blue-600"></span>
-        <p className=" font-bold text-xl lg:text-3xl">{`Let's Talk`}</p>
-      </div>
+      <PageTitle title="Let's Talk" />
       <ContactUs />
     </div>
   );

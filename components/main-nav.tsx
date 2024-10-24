@@ -11,8 +11,9 @@ import { AlignJustify } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { ModeToggle } from "./ui/ModeToggle";
+import { ModeToggle } from "./ui/mode-toggle";
 import { fetchMainNavData } from "@/api/api";
+import { motion } from "framer-motion"; // Import motion from Framer Motion
 
 export interface MainNavData {
   name: string;
@@ -33,8 +34,11 @@ const MainNav = () => {
   }, []);
 
   return (
-    <div
-      data-aos="flip-down"
+    <motion.div // Use motion.div instead of div
+      initial={{ opacity: 0, y: -20 }} // Initial state
+      animate={{ opacity: 1, y: 0 }} // Animation state when visible
+      exit={{ opacity: 0, y: -20 }} // Animation state when exiting
+      transition={{ duration: 0.5 }} // Duration of the animation
       className="bg-white dark:bg-slate-900 h-20 lg:h-32 sticky z-50 top-0"
     >
       <div className="h-full w-full flex items-center justify-between px-5 container">
@@ -90,7 +94,7 @@ const MainNav = () => {
           </SheetContent>
         </Sheet>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

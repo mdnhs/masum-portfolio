@@ -1,8 +1,9 @@
 "use client";
 import { useEffect, useState } from "react";
-import ProjectCard from "./ui/ProjectCard";
+import ProjectCard from "./ui/project-card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
 import { fetchProjectData } from "@/api/api";
+import { motion } from "framer-motion"; // Import motion from Framer Motion
 
 export interface ProjectsType {
   projectTitle: string;
@@ -48,51 +49,57 @@ const ProjectContainer = () => {
 
   return (
     <div className="space-y-10">
-      <Tabs
-        data-aos="fade-right"
-        value={activeCategory}
-        onValueChange={setActiveCategory}
-        className="w-full lg:w-[750px] space-y-10"
+      {/* Tabs with animated TabList */}
+      <motion.div
+        initial={{ opacity: 0, y: -20 }} // Slide up animation for TabsList
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
       >
-        <TabsList className="bg-transparent p-0 w-full h-12 grid grid-cols-4 justify-evenly fad">
-          {categories.map((category) => (
-            <TabsTrigger
-              className="text-lg w-full flex items-center justify-center h-full "
-              key={category}
-              value={category}
-            >
-              {category}
-            </TabsTrigger>
-          ))}
-        </TabsList>
+        <Tabs
+          value={activeCategory}
+          onValueChange={setActiveCategory}
+          className="w-full lg:w-[750px] space-y-10"
+        >
+          <TabsList className="bg-transparent p-0 w-full h-12 grid grid-cols-4 justify-evenly">
+            {categories.map((category, index) => (
+              <TabsTrigger
+                key={"category" + index}
+                className="text-lg w-full flex items-center justify-center h-full"
+                value={category}
+              >
+                {category}
+              </TabsTrigger>
+            ))}
+          </TabsList>
 
-        {categories.map((category) => (
-          <TabsContent key={category} value={category}>
-            <div className=" space-y-10 container">
-              {filteredProjects?.map((item: ProjectsType, index) => {
-                const aosAnimation =
-                  index % 2 === 0 ? "fade-left" : "fade-right";
-                return (
-                  <div
-                    key={index + "project"}
-                    data-aos={aosAnimation}
-                    data-aos-easing="ease-in-sine"
-                    data-aos-duration="500"
-                  >
-                    <ProjectCard
-                      projectTitle={item.projectTitle}
-                      projectCategory={item.projectCategory}
-                      projectDetails={item.projectDetails}
-                      projectPhoto={item.projectPhoto}
-                      projectVideo={item.projectVideo}
-                    />
-                  </div>
-                );
-              })}
-            </div>
-          </TabsContent>
-        ))}
-      </Tabs>
+          {categories.map((category) => (
+            <TabsContent key={category} value={category}>
+              <div className="space-y-10 container">
+                {filteredProjects?.map((item: ProjectsType, index) => {
+                  const animationDirection = index % 2 === 0 ? -50 : 50; // Alternate between left and right
+
+                  return (
+                    <motion.div
+                      key={index + "project"}
+                      initial={{ opacity: 0, x: animationDirection }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.5, delay: index * 0.1 }} // Add delay for smooth appearance
+                    >
+                      <ProjectCard
+                        projectTitle={item.projectTitle}
+                        projectCategory={item.projectCategory}
+                        projectDetails={item.projectDetails}
+                        projectPhoto={item.projectPhoto}
+                        projectVideo={item.projectVideo}
+                      />
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </TabsContent>
+          ))}
+        </Tabs>
+      </motion.div>
     </div>
   );
 };

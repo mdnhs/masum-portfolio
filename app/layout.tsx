@@ -4,7 +4,6 @@ import MainNav from "@/components/main-nav";
 import { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import ClientAOSProvider from "@/animation/ClientAOSProvider";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
@@ -38,7 +37,6 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <MainNav />
-          <ClientAOSProvider />
           {children}
           <MainFooter />
         </ThemeProvider>
