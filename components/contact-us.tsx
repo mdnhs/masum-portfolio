@@ -59,7 +59,7 @@ const ContactUs = () => {
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.8 }} // Zoom-in effect
-      animate={{ opacity: 1, scale: 1 }}
+      whileInView={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.5 }}
       className="grid grid-cols-2 bg-white dark:bg-slate-900 gap-6 p-5 lg:p-10 shadow-2xl"
     >
@@ -73,7 +73,7 @@ const ContactUs = () => {
           className="col-span-1 border-b-2 border-gray-500 focus:border-blue-600 outline-none py-2"
           {...register("first_name")}
           initial={{ opacity: 0, y: -20 }} // Slide in from the top
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
         />
         {errors.first_name && (
@@ -86,7 +86,7 @@ const ContactUs = () => {
           className="col-span-1 border-b-2 border-gray-500 focus:border-blue-600 outline-none py-2"
           {...register("last_name")}
           initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         />
         {errors.last_name && (
@@ -99,7 +99,7 @@ const ContactUs = () => {
           className="col-span-2 border-b-2 border-gray-500 focus:border-blue-600 outline-none py-2"
           {...register("email")}
           initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
         />
         {errors.email && (
@@ -112,7 +112,7 @@ const ContactUs = () => {
           className="col-span-2 border-b-2 border-gray-500 focus:border-blue-600 outline-none py-2"
           {...register("subject")}
           initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
         />
 
@@ -121,7 +121,7 @@ const ContactUs = () => {
           className="col-span-2 border-b-2 border-gray-500 focus:border-blue-600 outline-none py-2 min-h-40"
           {...register("message")}
           initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.5 }}
         />
         {errors.message && (
@@ -130,7 +130,7 @@ const ContactUs = () => {
 
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }} // Button zoom effect
-          animate={{ opacity: 1, scale: 1 }}
+          whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 0.6 }}
         >
           <Button
@@ -148,7 +148,7 @@ const ContactUs = () => {
         <motion.p
           className="col-span-2 mt-4 text-green-500"
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          whileInView={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.7 }}
         >
           {formStatus}

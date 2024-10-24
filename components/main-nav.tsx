@@ -36,7 +36,7 @@ const MainNav = () => {
   return (
     <motion.div // Use motion.div instead of div
       initial={{ opacity: 0, y: -20 }} // Initial state
-      animate={{ opacity: 1, y: 0 }} // Animation state when visible
+      whileInView={{ opacity: 1, y: 0 }} // Animation state when visible
       exit={{ opacity: 0, y: -20 }} // Animation state when exiting
       transition={{ duration: 0.5 }} // Duration of the animation
       className="bg-white dark:bg-slate-900 h-20 lg:h-32 sticky z-50 top-0"

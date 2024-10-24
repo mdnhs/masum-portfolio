@@ -3,7 +3,10 @@ import { useEffect, useState } from "react";
 import { Button } from "./ui/button";
 import ExperienceCard from "./ui/experience-card";
 import EducationCard from "./ui/education-card";
-import SkillCard, { languagesType, professionalSkillSetType } from "./ui/skill-card";
+import SkillCard, {
+  languagesType,
+  professionalSkillSetType,
+} from "./ui/skill-card";
 import Link from "next/link";
 import {
   fetchDownloadCVData,
@@ -66,7 +69,7 @@ const ResumeContainer = () => {
       <motion.div
         key={index + `experience-${index}`}
         initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }} // Alternating animations
-        animate={{ opacity: 1, x: 0 }}
+        whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5 }}
       >
         <ExperienceCard {...item} />
@@ -78,7 +81,7 @@ const ResumeContainer = () => {
       <motion.div
         key={index + `education-${index}`}
         initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-        animate={{ opacity: 1, x: 0 }}
+        whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5 }}
       >
         <EducationCard {...item} />
@@ -90,7 +93,7 @@ const ResumeContainer = () => {
       <motion.div
         key={index + `skill-${index}`}
         initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-        animate={{ opacity: 1, x: 0 }}
+        whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5 }}
       >
         <SkillCard {...item} />
@@ -102,7 +105,7 @@ const ResumeContainer = () => {
       <div className="w-full lg:w-[750px] space-y-6">
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
+          whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
           className="flex justify-between items-center"
         >
@@ -124,7 +127,7 @@ const ResumeContainer = () => {
       <div className="w-full lg:w-[750px] space-y-6">
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
+          whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
           className="flex justify-between items-center"
         >
@@ -135,7 +138,7 @@ const ResumeContainer = () => {
       <div className="w-full lg:w-[750px] space-y-6">
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
+          whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
           className="flex justify-between items-center"
         >

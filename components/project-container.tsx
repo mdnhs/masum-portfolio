@@ -52,7 +52,7 @@ const ProjectContainer = () => {
       {/* Tabs with animated TabList */}
       <motion.div
         initial={{ opacity: 0, y: -20 }} // Slide up animation for TabsList
-        animate={{ opacity: 1, y: 0 }}
+        whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
         <Tabs
@@ -82,7 +82,7 @@ const ProjectContainer = () => {
                     <motion.div
                       key={index + "project"}
                       initial={{ opacity: 0, x: animationDirection }}
-                      animate={{ opacity: 1, x: 0 }}
+                      whileInView={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.5, delay: index * 0.1 }} // Add delay for smooth appearance
                     >
                       <ProjectCard

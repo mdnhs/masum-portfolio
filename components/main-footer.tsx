@@ -29,7 +29,7 @@ const MainFooter = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-0">
           <motion.div
             initial={{ opacity: 0, x: -50 }} // Initial state for email section
-            animate={{ opacity: 1, x: 0 }} // Animate to visible
+            whileInView={{ opacity: 1, x: 0 }} // Animate to visible
             transition={{ duration: 0.5 }} // Duration of the animation
             className="h-full flex items-center"
           >
@@ -50,7 +50,7 @@ const MainFooter = () => {
           </motion.div>
           <motion.div
             initial={{ opacity: 0, x: 50 }} // Initial state for phone section
-            animate={{ opacity: 1, x: 0 }} // Animate to visible
+            whileInView={{ opacity: 1, x: 0 }} // Animate to visible
             transition={{ duration: 0.5 }} // Duration of the animation
             className="h-full flex items-center"
           >

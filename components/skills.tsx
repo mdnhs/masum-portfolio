@@ -31,7 +31,7 @@ const Skills = () => {
       <div className="col-span-full lg:col-span-5">
         <motion.p
           initial={{ opacity: 0, x: -50 }} // Initial state for the heading
-          animate={{ opacity: 1, x: 0 }} // Animate to visible
+          whileInView={{ opacity: 1, x: 0 }} // Animate to visible when in view
           transition={{ duration: 0.5 }} // Duration of the animation
           className="font-extrabold text-3xl drop-shadow-lg w-full text-center lg:text-end"
         >
@@ -43,7 +43,7 @@ const Skills = () => {
           <motion.div
             key={index + "skill"}
             initial={{ opacity: 0, scale: 0.8 }} // Initial state for skill items
-            animate={{ opacity: 1, scale: 1 }} // Animate to visible and scale up
+            whileInView={{ opacity: 1, scale: 1 }} // Animate to visible and scale up when in view
             transition={{ duration: 0.5, delay: index * 0.1 }} // Delay for staggered effect
             className="w-full h-40 bg-white rounded-lg text-center overflow-hidden flex justify-center items-center relative"
           >
