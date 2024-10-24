@@ -1,4 +1,4 @@
-import ProjectContainer from "@/components/ProjectContainer";
+import ProjectContainer from "@/components/project-container";
 
 const page = () => {
   return (

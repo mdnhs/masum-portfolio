@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import DOMPurify from "isomorphic-dompurify";
 import { Button } from "./ui/button";
-// Define the structure of the social links
+
 interface SocialLinks {
   gitHub?: string;
   facebook?: string;
@@ -13,8 +13,7 @@ interface SocialLinks {
   insta?: string;
 }
 
-// Define the structure of the data object
-interface HeroData {
+interface SiteHeaderData {
   profilePicture: string;
   name: string;
   designation: string;
@@ -24,8 +23,8 @@ interface HeroData {
   bioDetails: string;
 }
 
-const Hero = () => {
-  const [data, setData] = useState<HeroData | null>(null);
+const SiteHeader = () => {
+  const [data, setData] = useState<SiteHeaderData | null>(null);
 
   useEffect(() => {
     fetch("https://mdnhs.github.io/masum-json/about.json")
@@ -140,4 +139,4 @@ const Hero = () => {
   );
 };
 
-export default Hero;
+export default SiteHeader;

@@ -6,34 +6,30 @@ import {
   SheetHeader,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { siteConfig } from "@/config/site";
 import { AlignJustify } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { ModeToggle } from "./ModeToggle";
+import { ModeToggle } from "./ui/ModeToggle";
+import { fetchMainNavData } from "@/api/api";
 
-// Define a type for the data you're fetching
-interface HeaderData {
+export interface MainNavData {
   name: string;
   designation: string;
 }
 
-const navList = [
-  { id: 1, name: "ABOUT ME", url: "/" },
-  { id: 2, name: "PROJECTS", url: "/projects" },
-  { id: 3, name: "RESUME", url: "/resume" },
-  { id: 4, name: "CONTACT", url: "/contact" },
-];
-
-const Header = () => {
+const MainNav = () => {
   const pathName = usePathname();
-  // Use the defined type instead of 'any'
-  const [data, setData] = useState<HeaderData | null>(null);
+  const [data, setData] = useState<MainNavData | null>(null);
 
   useEffect(() => {
-    fetch("https://mdnhs.github.io/masum-json/header.json")
-      .then((res) => res.json())
-      .then(setData);
+    const getData = async () => {
+      const data = await fetchMainNavData();
+      setData(data);
+    };
+
+    getData();
   }, []);
 
   return (
@@ -48,7 +44,7 @@ const Header = () => {
         >
           <div className="flex gap-3 items-center align-middle">
             <span className="w-5 h-5 bg-blue-600"></span>
-            <p className=" font-bold text-xl lg:text-3xl">{data?.name}</p>
+            <p className="font-bold text-xl lg:text-3xl">{data?.name}</p>
           </div>
 
           <p className="lg:pt-2">
@@ -57,15 +53,15 @@ const Header = () => {
           </p>
         </Link>
         <div className="lg:flex items-center gap-4 hidden">
-          {navList.map((item, index) => (
+          {siteConfig.mainNav.map((item, index) => (
             <Link
-              href={item.url}
+              href={item.href}
               key={index + "navList"}
               className={`hover:text-blue-600 cursor-pointer ${
-                pathName === item.url ? "text-blue-600" : ""
+                pathName === item.href ? "text-blue-600" : ""
               }`}
             >
-              {item.name}
+              {item.title}
             </Link>
           ))}
           <ModeToggle />
@@ -77,15 +73,15 @@ const Header = () => {
           <SheetContent side="top">
             <SheetHeader>
               <SheetDescription className="h-screen flex flex-col justify-center text-3xl items-center space-y-6">
-                {navList.map((item, index) => (
+                {siteConfig.mainNav.map((item, index) => (
                   <Link
-                    href={item.url}
+                    href={item.href}
                     key={index + "navList"}
                     className={`hover:text-blue-600 cursor-pointer ${
-                      pathName === item.url ? "text-blue-600" : ""
+                      pathName === item.href ? "text-blue-600" : ""
                     }`}
                   >
-                    {item.name}
+                    {item.title}
                   </Link>
                 ))}
                 <ModeToggle />
@@ -98,4 +94,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default MainNav;

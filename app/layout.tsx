@@ -1,16 +1,16 @@
 import { ThemeProvider } from "@/components/theme-provider";
-import Footer from "@/components/ui/footer";
-import Header from "@/components/ui/header";
+import MainFooter from "@/components/main-footer";
+import MainNav from "@/components/main-nav";
 import { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import ClientAOSProvider from "@/animation/ClientAOSProvider";
+import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
-  title: "Masum | Data Data Analyst",
-  keywords: "data analysis, data insights, analytics, business intelligence",
-  description: "Data Analyst",
-  viewport: "width=device-width, initial-scale=1",
+  title: siteConfig.title,
+  keywords: siteConfig.keywords,
+  description: siteConfig.description,
 };
 
 const poppins = localFont({
@@ -37,10 +37,10 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Header />
+          <MainNav />
           <ClientAOSProvider />
           {children}
-          <Footer />
+          <MainFooter />
         </ThemeProvider>
       </body>
     </html>

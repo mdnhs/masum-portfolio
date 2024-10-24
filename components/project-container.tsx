@@ -2,8 +2,9 @@
 import { useEffect, useState } from "react";
 import ProjectCard from "./ui/ProjectCard";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
+import { fetchProjectData } from "@/api/api";
 
-interface ProjectsType {
+export interface ProjectsType {
   projectTitle: string;
   projectCategory: string;
   projectDetails: string;
@@ -16,9 +17,22 @@ const ProjectContainer = () => {
   const [activeCategory, setActiveCategory] = useState<string>("All");
 
   useEffect(() => {
-    fetch("https://mdnhs.github.io/masum-json/projects.json")
-      .then((res) => res.json())
-      .then(setData);
+    const getData = async () => {
+      try {
+        const result = await fetchProjectData();
+        if (Array.isArray(result)) {
+          setData(result);
+        } else {
+          console.error("Expected an array of projects, but received:", result);
+          setData(null);
+        }
+      } catch (error) {
+        console.error("Error fetching project data:", error);
+        setData(null);
+      }
+    };
+
+    getData();
   }, []);
 
   // Get unique categories from the data

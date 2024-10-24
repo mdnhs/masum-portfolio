@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import { cleanHtml } from "./ui/cleanHtml";
-import RichTextEditor from "./RichTextInput";
+import { cleanHtml } from "../lib/cleanHtml";
+import RichTextEditor from "./rich-text-input";
 import { Copy } from "lucide-react";
 
 const Converter: React.FC = () => {

@@ -1,4 +1,4 @@
-import ResumeContainer from "@/components/ResumeContainer";
+import ResumeContainer from "@/components/resume-container";
 
 const page = () => {
   return (

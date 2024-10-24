@@ -1,23 +1,26 @@
 "use client";
+import { fetchMainFooterData } from "@/api/api";
 import { Mail, Phone } from "lucide-react";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 // Define the structure of the data object
-interface FooterData {
+export interface MainFooterData {
   mail: string;
   phone: string;
 }
 
-const Footer = () => {
-  const [data, setData] = useState<FooterData | null>(null);
+const MainFooter = () => {
+  const [data, setData] = useState<MainFooterData | null>(null);
 
   useEffect(() => {
-    fetch("https://mdnhs.github.io/masum-json/footer.json")
-      .then((res) => res.json())
-      .then((data: FooterData) => setData(data));
-  }, []);
+    const getData = async () => {
+      const data = await fetchMainFooterData();
+      setData(data);
+    };
 
+    getData();
+  }, []);
   return (
     <div className="dark:bg-slate-900 bg-white">
       <div className="grid grid-cols-1 lg:grid-cols-2 container px-5 h-fit dark:bg-slate-900 lg:h-32  w-full py-10 lg:py-0">
@@ -61,4 +64,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default MainFooter;
