@@ -44,7 +44,7 @@ const SiteHeader = () => {
           initial={{ opacity: 0, x: -100 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
-          viewport={{ once: true, amount: 0.2 }} // Animation triggers when 20% of element is in view
+          // Animation triggers when 20% of element is in view
           className="h-[535px] w-full lg:w-[375px] bg-orange-100 dark:bg-slate-700 shadow-2xl absolute lg:-right-28 top-7 lg:top-48"
         >
           <div className="h-[85%] flex justify-center items-center gap-5 flex-col p-10">
@@ -52,7 +52,7 @@ const SiteHeader = () => {
               initial={{ scale: 0 }}
               whileInView={{ scale: 1 }}
               transition={{ duration: 0.5 }}
-              viewport={{ once: true, amount: 0.2 }} // Trigger when element is 20% in view
+              // Trigger when element is 20% in view
               className="h-60 w-60 rounded-full bg-white relative overflow-hidden"
             >
               <Image
@@ -66,7 +66,6 @@ const SiteHeader = () => {
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
-              viewport={{ once: true, amount: 0.2 }}
               className="font-bold text-3xl w-full text-center"
             >
               {data?.name}
@@ -76,7 +75,6 @@ const SiteHeader = () => {
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
-              viewport={{ once: true, amount: 0.2 }}
               className="font-light text-center"
             >
               {data?.designation}
@@ -87,7 +85,6 @@ const SiteHeader = () => {
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
-              viewport={{ once: true, amount: 0.2 }}
               className="flex justify-evenly px-10 w-full"
             >
               <Link
@@ -128,14 +125,12 @@ const SiteHeader = () => {
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
-          viewport={{ once: true, amount: 0.2 }}
           className="lg:basis-2/3 space-y-8 lg:pl-40 p-5 lg:p-0"
         >
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
-            viewport={{ once: true, amount: 0.2 }}
             className="text-4xl lg:text-7xl font-bold"
           >
             {data?.bioHeadings}
@@ -144,7 +139,6 @@ const SiteHeader = () => {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
-            viewport={{ once: true, amount: 0.2 }}
             className="text-xl lg:text-2xl font-bold"
           >
             {data?.bioTitle}
