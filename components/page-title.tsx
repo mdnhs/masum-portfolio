@@ -21,7 +21,7 @@ const PageTitle = (props: PageTitleProps) => {
           initial={{ opacity: 0, y: -50 }} // Zoom-in animation
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="md:text-center font-medium text-lg text-justify w-1/3"
+          className="md:text-center font-medium text-lg text-justify md:w-1/3"
         >
           {props.description}
         </motion.p>

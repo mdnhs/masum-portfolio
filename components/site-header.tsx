@@ -60,6 +60,8 @@ const SiteHeader = () => {
                 fill
                 className="w-full h-full object-contain transition-all duration-300 hover:scale-110"
                 alt="Profile Picture"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+
               />
             </motion.div>
             <motion.p

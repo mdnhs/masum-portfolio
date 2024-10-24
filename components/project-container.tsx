@@ -60,11 +60,11 @@ const ProjectContainer = () => {
           onValueChange={setActiveCategory}
           className="w-full lg:w-[750px] space-y-10"
         >
-          <TabsList className="bg-transparent p-0 w-full h-12 grid grid-cols-4 justify-evenly">
+          <TabsList className="bg-transparent p-0 w-full grid md:grid-cols-4 justify-evenly">
             {categories.map((category, index) => (
               <TabsTrigger
                 key={"category" + index}
-                className="text-lg w-full flex items-center justify-center h-full"
+                className="text-lg w-full flex items-center justify-center h-12"
                 value={category}
               >
                 {category}

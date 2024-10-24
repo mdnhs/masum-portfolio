@@ -12,25 +12,11 @@ interface ProjectsType {
 
 const ProjectCard = (props: ProjectsType) => {
   return (
-    <div className="w-full lg:w-[750px] min-h-[439px] bg-white dark:bg-slate-900 p-5 relative gap-5 grid grid-cols-2 container">
+    <div className="w-full lg:w-[750px] min-h-[439px] bg-white dark:bg-slate-900 p-5 relative gap-5 container">
       <span className="w-2 h-12 bg-blue-600 absolute left-0 top-16"></span>
-      <div className="space-y-5 col-span-full lg:col-span-1">
-        <p className="text-3xl font-black text-blue-600">
-          {props.projectCategory}
-        </p>
-        <p className="text-xl font-extrabold text-blue-600">
-          {props.projectTitle}
-        </p>
-        <div
-          className="text-justify"
-          dangerouslySetInnerHTML={{
-            __html: DOMPurify.sanitize(props?.projectDetails ?? ""),
-          }}
-        />
-      </div>
-      <div className="col-span-full lg:col-span-1 relative">
-        <div className="lg:absolute w-full lg:w-[454px] h-[288px] max-h-[288px] lg:left-0 lg:bottom-5 shadow-2xl overflow-hidden">
-          <div className="w-[454px] h-[288px] relative bg-black ">
+      <div className=" h-fit lg:pb-5 lg:float-right">
+        <div className="w-full relative lg:w-[414px] h-[288px] max-h-[288px] shadow-2xl ">
+          <div className="w-full lg:w-[454px] lg:absolute h-[288px] lg:-right-20 bg-black ">
             {" "}
             {
               <Carousel autoSlide={false}>
@@ -65,6 +51,20 @@ const ProjectCard = (props: ProjectsType) => {
             }
           </div>
         </div>
+      </div>
+      <div className="space-y-5 text-justify">
+        <p className="text-3xl font-black text-blue-600">
+          {props.projectCategory}
+        </p>
+        <p className="text-xl font-extrabold text-blue-600">
+          {props.projectTitle}
+        </p>
+        <div
+          className="text-justify"
+          dangerouslySetInnerHTML={{
+            __html: DOMPurify.sanitize(props?.projectDetails ?? ""),
+          }}
+        />
       </div>
     </div>
   );

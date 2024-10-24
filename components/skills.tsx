@@ -52,6 +52,7 @@ const Skills = () => {
               fill
               className="w-full h-full transition-all duration-300 hover:scale-110 object-contain"
               alt="Skill"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
           </motion.div>
         ))}
