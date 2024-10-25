@@ -1,41 +1,63 @@
 // app/api/site-header/route.ts
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
+import { SiteHeaderDataTypes } from "@/types/site-header-types";
 import connectMongo from "@/backend/db/mongodb";
-import SiteHeaderData from "@/backend/models/SiteHeaderData";
+import SiteHeaderDataModel from "@/backend/models/SiteHeaderData";
 
-export async function GET() {
-  await connectMongo();
+export async function POST(request: Request) {
   try {
-    const data = await SiteHeaderData.findOne();
-    return NextResponse.json(data);
+    await connectMongo(); // Ensure the database connection
+
+    const data = await request.formData();
+    const profilePicture = data.get("profilePicture")?.toString() || "";
+    const name = data.get("name")?.toString() || "";
+    const designation = data.get("designation")?.toString() || "";
+    const bioHeadings = data.get("bioHeadings")?.toString() || "";
+    const bioTitle = data.get("bioTitle")?.toString() || "";
+    const bioDetails = data.get("bioDetails")?.toString() || "";
+
+    // Socials
+    const socials = {
+      gitHub: data.get("socials.gitHub")?.toString() || "",
+      facebook: data.get("socials.facebook")?.toString() || "",
+      linkedIn: data.get("socials.linkedIn")?.toString() || "",
+      instagram: data.get("socials.instagram")?.toString() || "", // Corrected key
+    };
+
+    const siteHeaderData: SiteHeaderDataTypes = {
+      profilePicture,
+      name,
+      designation,
+      socials,
+      bioHeadings,
+      bioTitle,
+      bioDetails,
+    };
+
+    // Save data to MongoDB
+    const newHeaderData = await SiteHeaderDataModel.create(siteHeaderData);
+
+    return NextResponse.json({ success: true, data: newHeaderData });
   } catch (error) {
+    console.error("Error saving data:", error);
     return NextResponse.json(
-      { message: "Failed to fetch data" },
+      { success: false, error: "Failed to save data" },
       { status: 500 }
     );
   }
 }
 
-export async function POST(req: NextRequest) {
-  await connectMongo();
-  const body = await req.json();
-
+// Add a GET handler to fetch data
+export async function GET() {
   try {
-    const existingData = await SiteHeaderData.findOne();
-    if (existingData) {
-      await SiteHeaderData.findByIdAndUpdate(existingData._id, body);
-      return NextResponse.json({ message: "Data updated successfully" });
-    } else {
-      const data = new SiteHeaderData(body);
-      await data.save();
-      return NextResponse.json(
-        { message: "Data created successfully" },
-        { status: 201 }
-      );
-    }
+    await connectMongo(); // Ensure the database connection
+    const headerData = await SiteHeaderDataModel.find(); // Fetch data from MongoDB
+
+    return NextResponse.json({ success: true, data: headerData });
   } catch (error) {
+    console.error("Error fetching data:", error);
     return NextResponse.json(
-      { message: "Failed to save data" },
+      { success: false, error: "Failed to fetch data" },
       { status: 500 }
     );
   }

@@ -14,8 +14,8 @@ const SiteHeader = () => {
 
   useEffect(() => {
     const getData = async () => {
-      const data = await fetchAboutData();
-      setData(data);
+      const fetchedData = await fetchAboutData();
+      setData(fetchedData?.data[0] || null); // Access the first item in the array
     };
 
     getData();
@@ -28,7 +28,6 @@ const SiteHeader = () => {
           initial={{ opacity: 0, x: -100 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
-          // Animation triggers when 20% of element is in view
           className="h-[535px] w-full lg:w-[375px] bg-orange-100 dark:bg-slate-700 shadow-2xl absolute lg:-right-28 top-7 lg:top-48"
         >
           <div className="h-[85%] flex justify-center items-center gap-5 flex-col p-10">
@@ -36,11 +35,10 @@ const SiteHeader = () => {
               initial={{ scale: 0 }}
               whileInView={{ scale: 1 }}
               transition={{ duration: 0.5 }}
-              // Trigger when element is 20% in view
               className="h-60 w-60 rounded-full bg-white relative overflow-hidden"
             >
               <Image
-                src={data?.profilePicture ?? "/images/placeholder.webp"}
+                src={data?.profilePicture === "[object File]" ? "/images/placeholder.webp" : data?.profilePicture}
                 fill
                 className="w-full h-full object-contain transition-all duration-300 hover:scale-110"
                 alt="Profile Picture"
@@ -73,28 +71,28 @@ const SiteHeader = () => {
               className="flex justify-evenly px-10 w-full"
             >
               <Link
-                href={data?.socials[0]?.gitHub ?? "/"}
+                href={data?.socials?.gitHub ?? "/"}
                 target="_blank"
                 className="flex gap-2 hover:text-blue-600"
               >
                 <Github />
               </Link>
               <Link
-                href={data?.socials[0]?.facebook ?? "/"}
+                href={data?.socials?.facebook ?? "/"}
                 target="_blank"
                 className="flex gap-2 hover:text-blue-600"
               >
                 <Facebook />
               </Link>
               <Link
-                href={data?.socials[0]?.linkedIn ?? "/"}
+                href={data?.socials?.linkedIn ?? "/"}
                 target="_blank"
                 className="flex gap-2 hover:text-blue-600"
               >
                 <Linkedin />
               </Link>
               <Link
-                href={data?.socials[0]?.insta ?? "/"}
+                href={data?.socials?.instagram ?? "/"}
                 target="_blank"
                 className="flex gap-2 hover:text-blue-600"
               >

@@ -1,11 +1,11 @@
-import React from 'react'
+import SiteHeaderForm from "@/components/admin-panel/site-header-form";
 
-type Props = {}
-
-const page = (props: Props) => {
+const page = () => {
   return (
-    <div>home</div>
-  )
-}
+    <div>
+      <SiteHeaderForm />
+    </div>
+  );
+};
 
-export default page
+export default page;
