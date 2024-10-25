@@ -1,16 +1,9 @@
 import Image from "next/image";
 import Carousel from "./inline-gallery";
 import DOMPurify from "isomorphic-dompurify";
+import { ProjectsDataType } from "@/types/projects-type";
 
-interface ProjectsType {
-  projectTitle: string;
-  projectCategory: string;
-  projectDetails: string;
-  projectPhoto: [];
-  projectVideo: [];
-}
-
-const ProjectCard = (props: ProjectsType) => {
+const ProjectCard = (props: ProjectsDataType) => {
   return (
     <div className="w-full lg:w-[750px] min-h-[439px] bg-white dark:bg-slate-900 p-5 relative gap-5 container">
       <span className="w-2 h-12 bg-blue-600 absolute left-0 top-16"></span>

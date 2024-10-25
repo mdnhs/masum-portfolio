@@ -4,17 +4,11 @@ import ProjectCard from "./ui/project-card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
 import { fetchProjectData } from "@/api/api";
 import { motion } from "framer-motion"; // Import motion from Framer Motion
+import { ProjectsDataType } from "@/types/projects-type";
 
-export interface ProjectsType {
-  projectTitle: string;
-  projectCategory: string;
-  projectDetails: string;
-  projectPhoto: [];
-  projectVideo: [];
-}
 
 const ProjectContainer = () => {
-  const [data, setData] = useState<ProjectsType[] | null>(null);
+  const [data, setData] = useState<ProjectsDataType[] | null>(null);
   const [activeCategory, setActiveCategory] = useState<string>("All");
 
   useEffect(() => {
@@ -75,7 +69,7 @@ const ProjectContainer = () => {
           {categories.map((category) => (
             <TabsContent key={category} value={category}>
               <div className="space-y-10 container">
-                {filteredProjects?.map((item: ProjectsType, index) => {
+                {filteredProjects?.map((item: ProjectsDataType, index) => {
                   const animationDirection = index % 2 === 0 ? -50 : 50; // Alternate between left and right
 
                   return (

@@ -85,7 +85,7 @@ const Converter: React.FC = () => {
               onClick={copyToClipboard}
               className=" bg-blue-600 text-white font-semibold py-1.5 px-2 rounded-md hover:bg-blue-700 transition duration-200 flex gap-2 text-xs items-center absolute top-1 right-4"
             >
-              <Copy size={16}/>
+              <Copy size={16} />
               Copy
             </button>
           )}

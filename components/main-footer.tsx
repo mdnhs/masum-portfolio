@@ -4,15 +4,10 @@ import { Mail, Phone } from "lucide-react";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion"; // Import motion from Framer Motion
-
-// Define the structure of the data object
-export interface MainFooterData {
-  mail: string;
-  phone: string;
-}
+import { MainFooterDataTypes } from "@/types/main-footer-types";
 
 const MainFooter = () => {
-  const [data, setData] = useState<MainFooterData | null>(null);
+  const [data, setData] = useState<MainFooterDataTypes | null>(null);
 
   useEffect(() => {
     const getData = async () => {

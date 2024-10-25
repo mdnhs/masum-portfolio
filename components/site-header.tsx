@@ -6,27 +6,11 @@ import Link from "next/link";
 import DOMPurify from "isomorphic-dompurify";
 import { Button } from "./ui/button";
 import { motion } from "framer-motion";
-import { fetchAboutData } from "@/api/api"; // Assuming you have fetchAboutData in your api folder
-
-interface SocialLinks {
-  gitHub?: string;
-  facebook?: string;
-  linkedIn?: string;
-  insta?: string;
-}
-
-export interface SiteHeaderData {
-  profilePicture: string;
-  name: string;
-  designation: string;
-  socials: SocialLinks[];
-  bioHeadings: string;
-  bioTitle: string;
-  bioDetails: string;
-}
+import { fetchAboutData } from "@/lib/fetchAboutData";
+import { SiteHeaderDataTypes } from "@/types/site-header-types";
 
 const SiteHeader = () => {
-  const [data, setData] = useState<SiteHeaderData | null>(null);
+  const [data, setData] = useState<SiteHeaderDataTypes | null>(null);
 
   useEffect(() => {
     const getData = async () => {
@@ -61,7 +45,6 @@ const SiteHeader = () => {
                 className="w-full h-full object-contain transition-all duration-300 hover:scale-110"
                 alt="Profile Picture"
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-
               />
             </motion.div>
             <motion.p

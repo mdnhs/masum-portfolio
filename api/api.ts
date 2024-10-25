@@ -1,10 +1,10 @@
-import { MainFooterData } from "@/components/main-footer";
-import { MainNavData } from "@/components/main-nav";
-import { ProjectsType } from "@/components/project-container";
-import { CVType, ResumeType } from "@/components/resume-container";
-import { SiteHeaderData } from "@/components/site-header";
-import { Data } from "@/components/skills";
 import { siteConfig } from "@/config/site";
+import { MainFooterDataTypes } from "@/types/main-footer-types";
+import { MainNavDataTypes } from "@/types/main-nav-types";
+import { ProjectsDataType } from "@/types/projects-type";
+import { CVDataType, ResumeDataType } from "@/types/resume-types";
+import { SiteHeaderDataTypes } from "@/types/site-header-types";
+import { SkillDataTypes } from "@/types/skill-types";
 
 async function fetchData<T>(endpoint: string): Promise<T> {
   const response = await fetch(`${siteConfig.API_BASE_URL}${endpoint}`);
@@ -15,38 +15,38 @@ async function fetchData<T>(endpoint: string): Promise<T> {
 }
 
 // Now, use the generic fetch function for each of your API calls
-export const fetchMainNavData = async (): Promise<MainNavData> => {
-  return fetchData<MainNavData>("header.json");
+export const fetchMainNavData = async (): Promise<MainNavDataTypes> => {
+  return fetchData<MainNavDataTypes>("header.json");
 };
 
-export const fetchAboutData = async (): Promise<SiteHeaderData> => {
-  return fetchData<SiteHeaderData>("about.json");
+export const fetchAboutData = async (): Promise<SiteHeaderDataTypes> => {
+  return fetchData<SiteHeaderDataTypes>("about.json");
 };
 
-export const fetchTechSkillData = async (): Promise< Data> => {
-  return fetchData<Data>("about.json");
+export const fetchTechSkillData = async (): Promise<SkillDataTypes> => {
+  return fetchData<SkillDataTypes>("about.json");
 };
 
-export const fetchMainFooterData = async (): Promise<MainFooterData> => {
-  return fetchData<MainFooterData>("footer.json");
+export const fetchMainFooterData = async (): Promise<MainFooterDataTypes> => {
+  return fetchData<MainFooterDataTypes>("footer.json");
 };
 
-export const fetchProjectData = async (): Promise<ProjectsType[]> => {
-  return fetchData<ProjectsType[]>("projects.json");
+export const fetchProjectData = async (): Promise<ProjectsDataType[]> => {
+  return fetchData<ProjectsDataType[]>("projects.json");
 };
 
-export const fetchExperienceData = async (): Promise<ResumeType[]> => {
-  return fetchData<ResumeType[]>("experience.json");
+export const fetchExperienceData = async (): Promise<ResumeDataType[]> => {
+  return fetchData<ResumeDataType[]>("experience.json");
 };
 
-export const fetchEducationData = async (): Promise<ResumeType[]> => {
-  return fetchData<ResumeType[]>("education.json");
+export const fetchEducationData = async (): Promise<ResumeDataType[]> => {
+  return fetchData<ResumeDataType[]>("education.json");
 };
 
-export const fetchSkillsData = async (): Promise<ResumeType[]> => {
-  return fetchData<ResumeType[]>("skills.json");
+export const fetchSkillsData = async (): Promise<ResumeDataType[]> => {
+  return fetchData<ResumeDataType[]>("skills.json");
 };
 
-export const fetchDownloadCVData = async (): Promise<CVType[]> => {
-  return fetchData<CVType[]>("downoaldCV.json");
+export const fetchDownloadCVData = async (): Promise<CVDataType[]> => {
+  return fetchData<CVDataType[]>("downoaldCV.json");
 };

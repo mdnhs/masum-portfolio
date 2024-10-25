@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 const poppins = localFont({
   src: [
     {
-      path: "./fonts/Poppins-Regular.ttf",
+      path: "../fonts/Poppins-Regular.ttf",
       weight: "400",
       style: "normal",
     },

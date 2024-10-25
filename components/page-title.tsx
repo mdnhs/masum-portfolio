@@ -1,9 +1,8 @@
 "use client";
+import { PageTitleDataTypes } from "@/types/page-title-types";
 import { motion } from "framer-motion";
 
-type PageTitleProps = { title: string; description?: string };
-
-const PageTitle = (props: PageTitleProps) => {
+const PageTitle = (props: PageTitleDataTypes) => {
   return (
     <>
       {" "}

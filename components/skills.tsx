@@ -1,21 +1,12 @@
 "use client";
 import { fetchTechSkillData } from "@/api/api";
+import { SkillDataTypes } from "@/types/skill-types";
 import { motion } from "framer-motion"; // Import motion from Framer Motion
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-// Define a type for skill item
-interface Skill {
-  image: string;
-}
-
-// Define a type for the data you're fetching
-export interface Data {
-  skills: Skill[];
-}
-
 const Skills = () => {
-  const [data, setData] = useState<Data | null>(null);
+  const [data, setData] = useState<SkillDataTypes | null>(null);
 
   useEffect(() => {
     const getData = async () => {

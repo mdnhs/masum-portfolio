@@ -1,45 +1,24 @@
 "use client";
-import { useEffect, useState } from "react";
-import { Button } from "./ui/button";
-import ExperienceCard from "./ui/experience-card";
-import EducationCard from "./ui/education-card";
-import SkillCard, {
-  languagesType,
-  professionalSkillSetType,
-} from "./ui/skill-card";
-import Link from "next/link";
 import {
   fetchDownloadCVData,
   fetchEducationData,
   fetchExperienceData,
   fetchSkillsData,
 } from "@/api/api";
+import { CVDataType, ResumeDataType } from "@/types/resume-types";
 import { motion } from "framer-motion"; // Importing Framer Motion
-
-export interface ResumeType {
-  experienceTimeline: string;
-  experienceDesignation: string;
-  experienceCompany: string;
-  experienceLocation: string;
-  experienceDetails: string;
-  educationTimeline: string;
-  educationUniversity: string;
-  educationSubject: string;
-  educationLocation: string;
-  educationDetails: string;
-  professionalSkillSet: professionalSkillSetType[];
-  languages: languagesType[];
-}
-
-export interface CVType {
-  cvDownloadLink: string;
-}
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { Button } from "./ui/button";
+import EducationCard from "./ui/education-card";
+import ExperienceCard from "./ui/experience-card";
+import SkillCard from "./ui/skill-card";
 
 const ResumeContainer = () => {
-  const [experienceData, setExperienceData] = useState<ResumeType[]>([]);
-  const [educationData, setEducationData] = useState<ResumeType[]>([]);
-  const [skillData, setSkillData] = useState<ResumeType[]>([]);
-  const [resumeLink, setResumeLink] = useState<CVType[]>([]);
+  const [experienceData, setExperienceData] = useState<ResumeDataType[]>([]);
+  const [educationData, setEducationData] = useState<ResumeDataType[]>([]);
+  const [skillData, setSkillData] = useState<ResumeDataType[]>([]);
+  const [resumeLink, setResumeLink] = useState<CVDataType[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {

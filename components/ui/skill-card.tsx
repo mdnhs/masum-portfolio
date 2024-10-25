@@ -1,22 +1,7 @@
+import { languagesType, professionalSkillSetType, SkillCardDataTypes } from "@/types/skill-types";
 import DOMPurify from "isomorphic-dompurify";
 
-interface SkillCardType {
-  professionalSkillSet: professionalSkillSetType[];
-  languages: languagesType[];
-}
-
-export interface professionalSkillSetType {
-  skillID: string;
-  skillTitle: string;
-  skillDetails: string;
-}
-
-export interface languagesType {
-  languageID: string;
-  languageName: string;
-}
-
-const SkillCard = (props: SkillCardType) => {
+const SkillCard = (props: SkillCardDataTypes) => {
   return (
     <div className="w-full lg:w-[750px] min-h-[439px] bg-white dark:bg-slate-900">
       <div className="relative gap-5 p-10">

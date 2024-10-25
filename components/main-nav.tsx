@@ -14,15 +14,11 @@ import { useEffect, useState } from "react";
 import { ModeToggle } from "./ui/mode-toggle";
 import { fetchMainNavData } from "@/api/api";
 import { motion } from "framer-motion"; // Import motion from Framer Motion
-
-export interface MainNavData {
-  name: string;
-  designation: string;
-}
+import { MainNavDataTypes } from "@/types/main-nav-types";
 
 const MainNav = () => {
   const pathName = usePathname();
-  const [data, setData] = useState<MainNavData | null>(null);
+  const [data, setData] = useState<MainNavDataTypes | null>(null);
 
   useEffect(() => {
     const getData = async () => {
