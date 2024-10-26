@@ -4,6 +4,8 @@ import { SiteHeaderDataTypes } from "@/types/site-header-types";
 import connectMongo from "@/backend/db/mongodb";
 import SiteHeaderDataModel from "@/backend/models/SiteHeaderData";
 
+
+// Handle POST requests for creating new site header data
 export async function POST(request: Request) {
   try {
     await connectMongo(); // Ensure the database connection
@@ -47,7 +49,7 @@ export async function POST(request: Request) {
   }
 }
 
-// Add a GET handler to fetch data
+// Handle GET requests to fetch all site header data
 export async function GET() {
   try {
     await connectMongo(); // Ensure the database connection
@@ -58,6 +60,37 @@ export async function GET() {
     console.error("Error fetching data:", error);
     return NextResponse.json(
       { success: false, error: "Failed to fetch data" },
+      { status: 500 }
+    );
+  }
+}
+
+// Handle PUT requests to update existing site header data
+export async function PUT(request: Request) {
+  try {
+    await connectMongo(); // Ensure the database connection
+
+    const data = await request.json(); // Parse the incoming JSON data
+    const { id, ...updateData } = data; // Destructure to get the ID and the data to update
+
+    // Update the site header data in MongoDB
+    const updatedHeaderData = await SiteHeaderDataModel.findByIdAndUpdate(id, updateData, {
+      new: true, // Return the updated document
+      runValidators: true, // Validate the update against the schema
+    });
+
+    if (!updatedHeaderData) {
+      return NextResponse.json(
+        { success: false, error: "Header data not found" },
+        { status: 404 }
+      );
+    }
+
+    return NextResponse.json({ success: true, data: updatedHeaderData });
+  } catch (error) {
+    console.error("Error updating data:", error);
+    return NextResponse.json(
+      { success: false, error: "Failed to update data" },
       { status: 500 }
     );
   }

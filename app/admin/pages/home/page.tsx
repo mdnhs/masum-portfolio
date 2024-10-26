@@ -1,9 +1,9 @@
-import SiteHeaderForm from "@/components/admin-panel/site-header-form";
+import HomeContainerAdmin from "@/frontend/HomeContainer";
 
 const page = () => {
   return (
     <div>
-      <SiteHeaderForm />
+      <HomeContainerAdmin />
     </div>
   );
 };

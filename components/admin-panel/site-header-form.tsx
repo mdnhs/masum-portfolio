@@ -1,12 +1,17 @@
 "use client";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { ChangeEvent, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { useState, ChangeEvent } from "react";
+import dynamic from "next/dynamic";
+import "react-quill/dist/quill.snow.css";
+
+// Import ReactQuill dynamically to avoid SSR issues
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 // Define schema using Zod for validation
 const siteHeaderSchema = z.object({
-  profilePicture: z.any().optional(),
+  profilePicture: z.string().optional(),
   name: z.string().min(1, "Name is required"),
   designation: z.string().min(1, "Designation is required"),
   socials: z.object({
@@ -22,11 +27,14 @@ const siteHeaderSchema = z.object({
 
 type SiteHeaderData = z.infer<typeof siteHeaderSchema>;
 
-const SiteHeaderForm = () => {
+const SiteHeaderForm = ({ selectedItem, setSelectedItem, onClose }) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
+    setValue,
+    getValues,
   } = useForm<SiteHeaderData>({
     resolver: zodResolver(siteHeaderSchema),
   });
@@ -38,34 +46,108 @@ const SiteHeaderForm = () => {
     const file = e.target.files?.[0];
     if (file) {
       setSelectedImage(file);
-      setImagePreview(URL.createObjectURL(file));
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImagePreview(reader.result as string);
+      };
+      reader.readAsDataURL(file);
+    } else {
+      setSelectedImage(null);
+      setImagePreview(null);
     }
   };
 
   const onSubmit = async (formData: SiteHeaderData) => {
-    const data = new FormData();
-    if (selectedImage) data.append("profilePicture", selectedImage);
-    data.append("name", formData.name);
-    data.append("designation", formData.designation);
-    data.append("bioHeadings", formData.bioHeadings);
-    data.append("bioTitle", formData.bioTitle);
-    data.append("bioDetails", formData.bioDetails);
-
-    Object.keys(formData.socials).forEach((key) => {
-      data.append(`socials.${key}`, formData.socials[key as keyof typeof formData.socials] || "");
-    });
+    const dataToSubmit = {
+      id: selectedItem._id,
+      ...formData,
+      profilePicture: imagePreview,
+    };
 
     const res = await fetch("/api/site-header", {
-      method: "POST",
-      body: data,
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(dataToSubmit),
     });
 
     if (res.ok) {
-      alert("Data saved successfully!");
+      const updatedItem = await res.json();
+      console.log("Data updated:", updatedItem);
+      setSelectedItem(null);
+      onClose(false);
     } else {
-      alert("Failed to save data.");
+      console.error("Failed to update data");
     }
   };
+
+  useEffect(() => {
+    if (selectedItem) {
+      reset({
+        ...selectedItem,
+        socials: {
+          gitHub: selectedItem.socials?.gitHub || "",
+          facebook: selectedItem.socials?.facebook || "",
+          linkedIn: selectedItem.socials?.linkedIn || "",
+          instagram: selectedItem.socials?.instagram || "",
+        },
+      });
+      setImagePreview(selectedItem.profilePicture);
+    }
+  }, [selectedItem, reset]);
+
+  useEffect(() => {
+    return () => {
+      if (imagePreview) {
+        URL.revokeObjectURL(imagePreview);
+      }
+    };
+  }, [imagePreview]);
+
+  const colors = ["red", "green", "blue", "orange", "violet"];
+
+  const modules = {
+    toolbar: [
+      [{ font: [] }, { size: ["small", false, "large", "huge"] }], // Custom fonts and size
+      ["bold", "italic", "underline", "strike"], // Text formatting options
+      [{ color: colors }, { background: colors }], // Text color and background color
+      [{ script: "sub" }, { script: "super" }], // Subscript/Superscript
+      [{ header: 1 }, { header: 2 }, "blockquote", "code-block"], // Headers and blocks
+      [
+        { list: "ordered" },
+        { list: "bullet" },
+        { indent: "-1" },
+        { indent: "+1" },
+      ], // Lists and indents
+      [{ direction: "rtl" }, { align: ["right", "center", "justify"] }], // Text direction and alignment
+      ["link", "image", "video", "formula"], // Media options
+      ["clean"], // Clear formatting
+    ],
+  };
+
+  const formats = [
+    "font",
+    "size",
+    "bold",
+    "italic",
+    "underline",
+    "strike",
+    "color",
+    "background",
+    "script",
+    "header",
+    "blockquote",
+    "code-block",
+    "list",
+    "indent",
+    "direction",
+    "align",
+    "link",
+    "image",
+    "video",
+    "formula",
+  ];
 
   return (
     <div className="min-h-screen bg-gray-100 p-6">
@@ -74,7 +156,7 @@ const SiteHeaderForm = () => {
         className="bg-white shadow-lg rounded-lg p-8 w-full lg:w-1/2 container space-y-6"
       >
         <h2 className="text-2xl text-black font-semibold text-center mb-4">
-          Edit Site Header Data
+          {selectedItem ? "Edit Site Header Data" : "Add Site Header Data"}
         </h2>
 
         {/* Profile Picture Upload */}
@@ -94,7 +176,9 @@ const SiteHeaderForm = () => {
             />
           )}
           {errors.profilePicture && (
-            <p className="text-red-500 text-sm">{errors.profilePicture.message}</p>
+            <p className="text-red-500 text-sm">
+              {errors.profilePicture.message}
+            </p>
           )}
         </div>
 
@@ -160,13 +244,13 @@ const SiteHeaderForm = () => {
 
           <input
             type="text"
-            {...register("socials.insta")}
+            {...register("socials.instagram")}
             placeholder="Instagram URL"
             className="px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
-          {errors.socials?.insta && (
+          {errors.socials?.instagram && (
             <p className="text-red-500 text-sm">
-              {errors.socials.insta.message}
+              {errors.socials.instagram.message}
             </p>
           )}
         </div>
@@ -193,23 +277,26 @@ const SiteHeaderForm = () => {
           <p className="text-red-500 text-sm">{errors.bioTitle.message}</p>
         )}
 
-        {/* Bio Details */}
-        <textarea
-          {...register("bioDetails")}
-          placeholder="Bio Details"
-          className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-          rows={4}
+        {/* Bio Details - Rich Text Editor */}
+        <label className="block font-medium mb-1">Bio Details</label>
+        <ReactQuill
+          // {...register("bioDetails")}
+          value={getValues("bioDetails")}
+          onChange={(value) => setValue("bioDetails", value)}
+          modules={modules}
+          formats={formats}
+          className=" border rounded-md"
+          placeholder="Enter bio details here..."
         />
         {errors.bioDetails && (
           <p className="text-red-500 text-sm">{errors.bioDetails.message}</p>
         )}
 
-        {/* Submit Button */}
         <button
           type="submit"
-          className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition duration-300"
+          className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600"
         >
-          Save Data
+          {selectedItem ? "Update" : "Submit"}
         </button>
       </form>
     </div>
