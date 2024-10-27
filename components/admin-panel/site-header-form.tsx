@@ -6,6 +6,7 @@ import { z } from "zod";
 import dynamic from "next/dynamic";
 import "react-quill/dist/quill.snow.css";
 import Image from "next/image";
+import { SiteHeaderFormTypes } from "@/types/site-header-types";
 
 // Import ReactQuill dynamically to avoid SSR issues
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
@@ -28,7 +29,11 @@ const siteHeaderSchema = z.object({
 
 type SiteHeaderData = z.infer<typeof siteHeaderSchema>;
 
-const SiteHeaderForm = ({ selectedItem, setSelectedItem, onClose }) => {
+const SiteHeaderForm: React.FC<SiteHeaderFormTypes> = ({
+  selectedItem,
+  setSelectedItem,
+  onClose,
+}) => {
   const {
     register,
     handleSubmit,
@@ -59,7 +64,6 @@ const SiteHeaderForm = ({ selectedItem, setSelectedItem, onClose }) => {
   };
 
   const onSubmit = async (formData: SiteHeaderData) => {
-    event.preventDefault();
     if (!selectedImage) {
       throw new Error("No file selected");
     }
@@ -75,7 +79,7 @@ const SiteHeaderForm = ({ selectedItem, setSelectedItem, onClose }) => {
     // console.log(newBlob.url);
 
     const dataToSubmit = {
-      id: selectedItem._id,
+      id: selectedItem?._id,
       ...formData,
       profilePicture: newBlob?.url,
     };
@@ -109,7 +113,7 @@ const SiteHeaderForm = ({ selectedItem, setSelectedItem, onClose }) => {
           instagram: selectedItem.socials?.instagram || "",
         },
       });
-      setImagePreview(selectedItem.profilePicture);
+      setImagePreview(selectedItem?.profilePicture || "");
     }
   }, [selectedItem, reset]);
 

@@ -1,8 +1,8 @@
 // Default import
 
-import { SiteHeaderDataTypes } from "@/types/site-header-types";
+import { SiteHeaderDataResponse } from "@/types/site-header-types";
 
-export const fetchAboutData = async (): Promise<SiteHeaderDataTypes | null> => {
+export const fetchAboutData = async (): Promise<SiteHeaderDataResponse | null> => {
   const res = await fetch("/api/site-header");
   if (!res.ok) throw new Error("Failed to fetch data");
   return res.json();
