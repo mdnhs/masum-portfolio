@@ -1,7 +1,7 @@
 "use client";
 import SiteHeaderForm from "@/components/admin-panel/site-header-form";
 import SiteHeaderTable from "@/components/admin-panel/site-header-tabel";
-import { fetchAboutData } from "@/lib/fetchAboutData";
+import { fetchAboutData } from "@/api/fetchAboutData";
 import { SiteHeaderDataTypes } from "@/types/site-header-types";
 import React, { useEffect, useState } from "react";
 

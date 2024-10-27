@@ -1,11 +1,7 @@
-import React from 'react'
+import React from "react";
 
-type Props = {}
+const resume = () => {
+  return <div>resume</div>;
+};
 
-const resume = (props: Props) => {
-  return (
-    <div>resume</div>
-  )
-}
-
-export default resume
+export default resume;

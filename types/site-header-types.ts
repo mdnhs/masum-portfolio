@@ -11,7 +11,7 @@ export interface SiteHeaderDataTypes extends Document {
   profilePicture: string;
   name: string;
   designation: string;
-  socials: SocialLinks[];
+  socials: SocialLinks;
   bioHeadings: string;
   bioTitle: string;
   bioDetails: string;

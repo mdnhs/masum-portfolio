@@ -6,7 +6,7 @@ import Link from "next/link";
 import DOMPurify from "isomorphic-dompurify";
 import { Button } from "./ui/button";
 import { motion } from "framer-motion";
-import { fetchAboutData } from "@/lib/fetchAboutData";
+import { fetchAboutData } from "@/api/fetchAboutData";
 import { SiteHeaderDataTypes } from "@/types/site-header-types";
 
 const SiteHeader = () => {
