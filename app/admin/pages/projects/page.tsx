@@ -1,11 +1,12 @@
-import React from 'react'
+import Test from "@/components/admin-panel/Test";
+import React from "react";
 
-type Props = {}
-
-const page = (props: Props) => {
+const page = () => {
   return (
-    <div>projects</div>
-  )
-}
+    <div>
+      <Test />
+    </div>
+  );
+};
 
-export default page
+export default page;

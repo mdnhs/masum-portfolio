@@ -1,6 +1,6 @@
 import { Document } from "mongoose";
 
-interface SocialLinks {
+export interface SocialLinks {
     gitHub?: string;
     facebook?: string;
     linkedIn?: string;

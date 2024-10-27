@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import dynamic from "next/dynamic";
 import "react-quill/dist/quill.snow.css";
+import Image from "next/image";
 
 // Import ReactQuill dynamically to avoid SSR issues
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
@@ -58,10 +59,25 @@ const SiteHeaderForm = ({ selectedItem, setSelectedItem, onClose }) => {
   };
 
   const onSubmit = async (formData: SiteHeaderData) => {
+    event.preventDefault();
+    if (!selectedImage) {
+      throw new Error("No file selected");
+    }
+
+    const file = selectedImage;
+
+    const response = await fetch(`/api/avatar/upload?filename=${file.name}`, {
+      method: "POST",
+      body: file,
+    });
+
+    const newBlob = await response.json();
+    // console.log(newBlob.url);
+
     const dataToSubmit = {
       id: selectedItem._id,
       ...formData,
-      profilePicture: imagePreview,
+      profilePicture: newBlob?.url,
     };
 
     const res = await fetch("/api/site-header", {
@@ -168,13 +184,17 @@ const SiteHeaderForm = ({ selectedItem, setSelectedItem, onClose }) => {
             onChange={onImageChange}
             className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
-          {imagePreview && (
-            <img
-              src={imagePreview}
-              alt="Selected profile"
-              className="mt-4 w-24 h-24 rounded-full object-cover"
-            />
-          )}
+          <div className="mt-4 w-24 h-24 rounded-full overflow-hidden relative">
+            {imagePreview && (
+              <Image
+                src={imagePreview}
+                fill
+                className="w-full h-full object-contain transition-all duration-300 hover:scale-110"
+                alt="Profile Picture"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              />
+            )}
+          </div>
           {errors.profilePicture && (
             <p className="text-red-500 text-sm">
               {errors.profilePicture.message}

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import DOMPurify from "isomorphic-dompurify";
+import Image from "next/image";
 
 const SiteHeaderTable = ({ data, onEdit, onClose }) => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -35,15 +36,19 @@ const SiteHeaderTable = ({ data, onEdit, onClose }) => {
               item?.bioDetails ?? ""
             );
             return (
-              <tr key={index} className="hover:bg-gray-50 align-top">
+              <tr key={index + "data"} className="hover:bg-gray-50 align-top">
                 <td className="border border-gray-300 px-4 py-2 w-1/12">
-                  {item.profilePicture && (
-                    <img
-                      src={item.profilePicture}
-                      alt="Profile"
-                      className="w-16 h-16 rounded-full object-cover"
-                    />
-                  )}
+                  <div className=" h-16 w-16 overflow-hidden rounded-full relative">
+                    {item.profilePicture && (
+                      <Image
+                        src={item?.profilePicture}
+                        fill
+                        className="w-full h-full object-contain transition-all duration-300 hover:scale-110"
+                        alt="Profile Picture"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      />
+                    )}
+                  </div>
                 </td>
                 <td className="border border-gray-300 px-4 py-2 w-2/12">
                   {item.name}
