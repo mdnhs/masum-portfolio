@@ -6,16 +6,16 @@ import Link from "next/link";
 import DOMPurify from "isomorphic-dompurify";
 import { Button } from "./ui/button";
 import { motion } from "framer-motion";
-import { fetchAboutData } from "@/api/fetchAboutData";
 import { SiteHeaderDataTypes } from "@/types/site-header-types";
+import { fetchAboutData } from "@/api/api";
 
 const SiteHeader = () => {
   const [data, setData] = useState<SiteHeaderDataTypes | null>(null);
 
   useEffect(() => {
     const getData = async () => {
-      const fetchedData = await fetchAboutData();
-      setData(fetchedData?.data[0] || null); // Access the first item in the array
+      const data = await fetchAboutData();
+      setData(data);
     };
 
     getData();
