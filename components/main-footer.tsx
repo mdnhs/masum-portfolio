@@ -5,8 +5,10 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion"; // Import motion from Framer Motion
 import { MainFooterDataTypes } from "@/types/main-footer-types";
+import { usePathname } from "next/navigation";
 
 const MainFooter = () => {
+  const pathName = usePathname();
   const [data, setData] = useState<MainFooterDataTypes | null>(null);
 
   useEffect(() => {
@@ -19,7 +21,11 @@ const MainFooter = () => {
   }, []);
 
   return (
-    <div className="dark:bg-slate-900 bg-white">
+    <div
+      className={`dark:bg-slate-900 bg-white ${
+        pathName.startsWith("/admin") ? "hidden" : ""
+      }`}
+    >
       <div className="grid grid-cols-1 lg:grid-cols-2 container px-5 h-fit dark:bg-slate-900 lg:h-32 w-full py-10 lg:py-0">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-0">
           <motion.div

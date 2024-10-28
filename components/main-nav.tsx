@@ -13,7 +13,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { ModeToggle } from "./ui/mode-toggle";
 import { fetchMainNavData } from "@/api/api";
-import { motion } from "framer-motion"; // Import motion from Framer Motion
+import { motion } from "framer-motion";
 import { MainNavDataTypes } from "@/types/main-nav-types";
 
 const MainNav = () => {
