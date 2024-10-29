@@ -1,8 +1,6 @@
 import React from "react";
 
-type Props = {};
-
-const HeaderDataForm = (props: Props) => {
+const HeaderDataForm = () => {
   return (
     <div className=" max-w-screen-lg">
       <div className="bg-white dark:bg-slate-900 rounded-lg shadow-lg p-4 px-4 md:p-8 mb-6">
