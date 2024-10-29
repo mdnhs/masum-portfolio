@@ -105,8 +105,8 @@ const data = {
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar collapsible="icon" {...props}>
-      <SidebarHeader>
-        <div className="flex justify-between overflow-hidden">
+      <SidebarHeader className=" dark:bg-slate-900">
+        <div className="flex justify-between">
           <div className="flex gap-2">
             <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
               <data.company.logo className="size-4" />
@@ -118,10 +118,12 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               <span className="truncate text-xs">{data.company.plan}</span>
             </div>
           </div>
-          <ModeToggle />
+          <div className="overflow-hidden group-data-[collapsible=icon]:hidden">
+            <ModeToggle />
+          </div>
         </div>
       </SidebarHeader>
-      <SidebarContent>
+      <SidebarContent className=" dark:bg-slate-900">
         <SidebarGroup>
           <SidebarMenu>
             <SidebarMenuItem>
@@ -137,7 +139,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <NavMain items={data.navMain} />
         <NavProjects projects={data.projects} />
       </SidebarContent>
-      <SidebarFooter>
+      <SidebarFooter className=" dark:bg-slate-950">
         <NavUser user={data.user} />
       </SidebarFooter>
       <SidebarRail />

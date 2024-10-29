@@ -1,4 +1,5 @@
 "use client";
+import HeaderDataForm from "@/components/header-data-form";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import React, { useState } from "react";
 
@@ -14,9 +15,9 @@ const AdminHomeContainer = () => {
       <Tabs
         value={activeCategory}
         onValueChange={setActiveCategory}
-        className="w-full lg:w-[750px] space-y-10"
+        className="w-full space-y-10"
       >
-        <TabsList className="bg-transparent p-0 w-full grid md:grid-cols-4 justify-evenly">
+        <TabsList className="p-0 w-full md:w-[750px] bg-white grid md:grid-cols-2 justify-evenly dark:bg-blue-600/75">
           {tabList.map((item, index) => (
             <TabsTrigger
               key={"category" + index}
@@ -28,11 +29,9 @@ const AdminHomeContainer = () => {
           ))}
         </TabsList>
 
-        {tabList.map((item, index) => (
-          <TabsContent key={"category" + index} value={item.category}>
-            <div className="space-y-10 container">{item.category}</div>
-          </TabsContent>
-        ))}
+        <TabsContent value={"Header"}>
+          <HeaderDataForm />
+        </TabsContent>
       </Tabs>
     </div>
   );
