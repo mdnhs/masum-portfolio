@@ -1,5 +1,52 @@
 import React from "react";
 import FileUpload from "../file-upload";
+import { Button } from "../ui/button";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
+
+const colors = ["red", "green", "blue", "orange", "violet"];
+
+const modules = {
+  toolbar: [
+    [{ font: [] }, { size: ["small", false, "large", "huge"] }], // Custom fonts and size
+    ["bold", "italic", "underline", "strike"], // Text formatting options
+    [{ color: colors }, { background: colors }], // Text color and background color
+    [{ script: "sub" }, { script: "super" }], // Subscript/Superscript
+    [{ header: 1 }, { header: 2 }, "blockquote", "code-block"], // Headers and blocks
+    [
+      { list: "ordered" },
+      { list: "bullet" },
+      { indent: "-1" },
+      { indent: "+1" },
+    ], // Lists and indents
+    [{ direction: "rtl" }, { align: ["right", "center", "justify"] }], // Text direction and alignment
+    ["link", "image", "video", "formula"], // Media options
+    ["clean"], // Clear formatting
+  ],
+};
+
+const formats = [
+  "font",
+  "size",
+  "bold",
+  "italic",
+  "underline",
+  "strike",
+  "color",
+  "background",
+  "script",
+  "header",
+  "blockquote",
+  "code-block",
+  "list",
+  "indent",
+  "direction",
+  "align",
+  "link",
+  "image",
+  "video",
+  "formula",
+];
 
 const HeaderDataForm = () => {
   return (
@@ -92,13 +139,20 @@ const HeaderDataForm = () => {
           </div>
           <div className="md:col-span-4">
             <label htmlFor="bio_details">Bio Details</label>
-            <textarea
-              name="bio_details"
-              id="bio_details"
-              placeholder="Example: My name's John DOe. A Software Engineer & A Tech Enthusiast."
-              className="h-28 border mt-1 rounded p-4 w-full bg-gray-50 dark:bg-slate-700 truncate"
+            <ReactQuill
+              // {...register("bioDetails")}
+              // value={getValues("bioDetails")}
+              // onChange={(value) => setValue("bioDetails", value)}
+              modules={modules}
+              formats={formats}
+              className=" border rounded-md"
+              placeholder="Enter bio details here..."
             />
           </div>
+
+          <Button className="uppercase bg-blue-600 hover:border border-blue-600 hover:bg-white hover:text-blue-600 rounded-full font-semibold dark:text-white hover:dark:text-slate-900 py-6 px-12">
+            SUBMIT
+          </Button>
         </div>
       </div>
     </div>
