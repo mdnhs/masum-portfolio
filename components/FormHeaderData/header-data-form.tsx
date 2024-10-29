@@ -138,7 +138,7 @@ const HeaderDataForm = () => {
               className="h-10 border mt-1 rounded px-4 w-full bg-gray-50 dark:bg-slate-700 truncate"
             />
           </div>
-          <div className="md:col-span-4">
+          <div className="md:col-span-4 space-y-1">
             <label htmlFor="bio_details">Bio Details</label>
             <ReactQuill
               // {...register("bioDetails")}
