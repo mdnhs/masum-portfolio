@@ -1,10 +1,15 @@
 import React from "react";
+import FileUpload from "../file-upload";
 
 const HeaderDataForm = () => {
   return (
     <div className=" max-w-screen-lg">
       <div className="bg-white dark:bg-slate-900 rounded-lg shadow-lg p-4 px-4 md:p-8 mb-6">
         <div className="grid gap-4 text-sm grid-cols-1 md:grid-cols-4">
+          <div className="md:col-span-4 space-y-1">
+            <label htmlFor="profile_picture">Avatar</label>
+            <FileUpload />
+          </div>
           <div className="md:col-span-4">
             <label htmlFor="full_name">Full Name</label>
             <input

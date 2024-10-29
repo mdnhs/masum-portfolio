@@ -1,5 +1,5 @@
 "use client";
-import HeaderDataForm from "@/components/header-data-form";
+import HeaderDataForm from "@/components/FormHeaderData/header-data-form";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import React, { useState } from "react";
 
