@@ -1,54 +1,55 @@
 import React from "react";
 import FileUpload from "../file-upload";
 import { Button } from "../ui/button";
-import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import dynamic from "next/dynamic";
+const ReactQuill = dynamic(() => import('react-quill'), { ssr: false });
 
-const colors = ["red", "green", "blue", "orange", "violet"];
-
-const modules = {
-  toolbar: [
-    [{ font: [] }, { size: ["small", false, "large", "huge"] }], // Custom fonts and size
-    ["bold", "italic", "underline", "strike"], // Text formatting options
-    [{ color: colors }, { background: colors }], // Text color and background color
-    [{ script: "sub" }, { script: "super" }], // Subscript/Superscript
-    [{ header: 1 }, { header: 2 }, "blockquote", "code-block"], // Headers and blocks
-    [
-      { list: "ordered" },
-      { list: "bullet" },
-      { indent: "-1" },
-      { indent: "+1" },
-    ], // Lists and indents
-    [{ direction: "rtl" }, { align: ["right", "center", "justify"] }], // Text direction and alignment
-    ["link", "image", "video", "formula"], // Media options
-    ["clean"], // Clear formatting
-  ],
-};
-
-const formats = [
-  "font",
-  "size",
-  "bold",
-  "italic",
-  "underline",
-  "strike",
-  "color",
-  "background",
-  "script",
-  "header",
-  "blockquote",
-  "code-block",
-  "list",
-  "indent",
-  "direction",
-  "align",
-  "link",
-  "image",
-  "video",
-  "formula",
-];
 
 const HeaderDataForm = () => {
+  const colors = ["red", "green", "blue", "orange", "violet"];
+  const modules = {
+    toolbar: [
+      [{ font: [] }, { size: ["small", false, "large", "huge"] }], // Custom fonts and size
+      ["bold", "italic", "underline", "strike"], // Text formatting options
+      [{ color: colors }, { background: colors }], // Text color and background color
+      [{ script: "sub" }, { script: "super" }], // Subscript/Superscript
+      [{ header: 1 }, { header: 2 }, "blockquote", "code-block"], // Headers and blocks
+      [
+        { list: "ordered" },
+        { list: "bullet" },
+        { indent: "-1" },
+        { indent: "+1" },
+      ], // Lists and indents
+      [{ direction: "rtl" }, { align: ["right", "center", "justify"] }], // Text direction and alignment
+      ["link", "image", "video", "formula"], // Media options
+      ["clean"], // Clear formatting
+    ],
+  };
+
+  const formats = [
+    "font",
+    "size",
+    "bold",
+    "italic",
+    "underline",
+    "strike",
+    "color",
+    "background",
+    "script",
+    "header",
+    "blockquote",
+    "code-block",
+    "list",
+    "indent",
+    "direction",
+    "align",
+    "link",
+    "image",
+    "video",
+    "formula",
+  ];
+
   return (
     <div className=" max-w-screen-lg">
       <div className="bg-white dark:bg-slate-900 rounded-lg shadow-lg p-4 px-4 md:p-8 mb-6">

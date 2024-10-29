@@ -11,7 +11,7 @@ export default function Carousel({
   children: slides = [],
   autoSlide = false,
   autoSlideInterval = 5000,
-}: CarouselProps) {
+}: Readonly<CarouselProps>) {
   const [curr, setCurr] = useState(0);
 
   const prev = () =>
@@ -23,7 +23,7 @@ export default function Carousel({
     if (!autoSlide || slides.length === 0) return; // Check if slides exist
     const slideInterval = setInterval(next, autoSlideInterval);
     return () => clearInterval(slideInterval);
-  }, [autoSlide, autoSlideInterval, slides.length]);
+  }, [autoSlide, autoSlideInterval, next, slides.length]);
 
   return (
     <div className="overflow-hidden relative">
