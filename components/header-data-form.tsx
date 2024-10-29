@@ -13,7 +13,6 @@ const HeaderDataForm = () => {
               id="full_name"
               placeholder="Example: John Doe"
               className="h-10 border mt-1 rounded px-4 w-full bg-gray-50 dark:bg-slate-700 truncate"
-              value=""
             />
           </div>
           <div className="md:col-span-4">
@@ -24,7 +23,6 @@ const HeaderDataForm = () => {
               id="designation"
               placeholder="Example: Software Engineer"
               className="h-10 border mt-1 rounded px-4 w-full bg-gray-50 dark:bg-slate-700 truncate"
-              value=""
             />
           </div>
           <div className="md:col-span-2">
@@ -35,7 +33,6 @@ const HeaderDataForm = () => {
               id="social_one"
               placeholder="Example: https://github.com/mdnhs"
               className="h-10 border mt-1 rounded px-4 w-full bg-gray-50 dark:bg-slate-700 truncate"
-              value=""
             />
           </div>
           <div className="md:col-span-2">
@@ -46,7 +43,6 @@ const HeaderDataForm = () => {
               id="social_two"
               placeholder="Example: https://facebook.com/srb47"
               className="h-10 border mt-1 rounded px-4 w-full bg-gray-50 dark:bg-slate-700 truncate"
-              value=""
             />
           </div>
           <div className="md:col-span-2">
@@ -57,7 +53,6 @@ const HeaderDataForm = () => {
               id="social_three"
               placeholder="Example: https://linkedin.com/mdnhs"
               className="h-10 border mt-1 rounded px-4 w-full bg-gray-50 dark:bg-slate-700 truncate"
-              value=""
             />
           </div>
           <div className="md:col-span-2">
@@ -68,7 +63,6 @@ const HeaderDataForm = () => {
               id="social_four"
               placeholder="Example: https://instagram.com/srb47"
               className="h-10 border mt-1 rounded px-4 w-full bg-gray-50 dark:bg-slate-700 truncate"
-              value=""
             />
           </div>
           <div className="md:col-span-2">
@@ -79,7 +73,6 @@ const HeaderDataForm = () => {
               id="greetings"
               placeholder="Example: Hey! There."
               className="h-10 border mt-1 rounded px-4 w-full bg-gray-50 dark:bg-slate-700 truncate"
-              value=""
             />
           </div>
           <div className="md:col-span-2">
@@ -90,7 +83,6 @@ const HeaderDataForm = () => {
               id="bio_title"
               placeholder="Example: My name's John DOe. A Software Engineer & A Tech Enthusiast."
               className="h-10 border mt-1 rounded px-4 w-full bg-gray-50 dark:bg-slate-700 truncate"
-              value=""
             />
           </div>
           <div className="md:col-span-4">
@@ -100,7 +92,6 @@ const HeaderDataForm = () => {
               id="bio_details"
               placeholder="Example: My name's John DOe. A Software Engineer & A Tech Enthusiast."
               className="h-28 border mt-1 rounded p-4 w-full bg-gray-50 dark:bg-slate-700 truncate"
-              value=""
             />
           </div>
         </div>
