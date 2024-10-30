@@ -5,6 +5,7 @@ import { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { siteConfig } from "@/config/site";
+import { Toaster } from "react-hot-toast";
 
 export const metadata: Metadata = {
   title: siteConfig.title,
@@ -30,6 +31,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`antialiased ${poppins.className}`}>
+      <Toaster position="top-right" reverseOrder={false} />
         <ThemeProvider
           attribute="class"
           defaultTheme="light"

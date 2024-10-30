@@ -14,6 +14,12 @@ const nextConfig = {
         port: "",
         pathname: "**",
       },
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+        port: "",
+        pathname: "**",
+      },
     ],
   },
   env: {
@@ -21,6 +27,7 @@ const nextConfig = {
     EMAILJS_TEMPLATE_ID: process.env.EMAILJS_TEMPLATE_ID,
     EMAILJS_USER_ID: process.env.EMAILJS_USER_ID,
     MONGODB_URI: process.env.MONGODB_URI,
+    API_BASE_URL_PRODUCTION: process.env.API_BASE_URL_PRODUCTION,
   },
 };
 

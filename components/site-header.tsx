@@ -1,27 +1,33 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import useFetchPublic from "@/services/fetch/useFetchPublic";
+import { getHeaderData } from "@/services/request/homeRequest";
+import { SiteHeaderDataTypes } from "@/types/site-header-types";
+import { motion } from "framer-motion";
+import DOMPurify from "isomorphic-dompurify";
 import { Facebook, Github, Instagram, Linkedin } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import DOMPurify from "isomorphic-dompurify";
+import { useCallback, useEffect, useState } from "react";
 import { Button } from "./ui/button";
-import { motion } from "framer-motion";
-import { SiteHeaderDataTypes } from "@/types/site-header-types";
-import { fetchAboutData } from "@/api/api";
+// import { getHeaderData } from "@/services/request/homeRequest";
 
 const SiteHeader = () => {
   const [data, setData] = useState<SiteHeaderDataTypes | null>(null);
+  const { fetchPublic } = useFetchPublic();
+
+  const handleFetchData = useCallback(async () => {
+    const req = getHeaderData();
+    const response = await fetchPublic(req);
+    if (response.isSuccess) {
+      setData(response.data[0]);
+    } else {
+      console.log("Error fetching data:", response);
+    }
+  }, [fetchPublic]);
 
   useEffect(() => {
-    const getData = async () => {
-      const data = await fetchAboutData();
-      setData(data);
-    };
-
-    getData();
-  }, []);
-
-  // console.log(data, "+++");
+    handleFetchData();
+  }, [handleFetchData]);
 
   return (
     <div className="grid grid-cols-12 lg:min-h-screen">
@@ -75,28 +81,28 @@ const SiteHeader = () => {
               className="flex justify-evenly px-10 w-full"
             >
               <Link
-                href={data?.socials?.gitHub || "/"}
+                href={data?.gitHub ?? "/"}
                 target="_blank"
                 className="flex gap-2 hover:text-blue-600"
               >
                 <Github />
               </Link>
               <Link
-                href={data?.socials?.facebook || "/"}
+                href={data?.facebook ?? "/"}
                 target="_blank"
                 className="flex gap-2 hover:text-blue-600"
               >
                 <Facebook />
               </Link>
               <Link
-                href={data?.socials?.linkedIn || "/"}
+                href={data?.linkedIn ?? "/"}
                 target="_blank"
                 className="flex gap-2 hover:text-blue-600"
               >
                 <Linkedin />
               </Link>
               <Link
-                href={data?.socials?.instagram || "/"}
+                href={data?.instagram ?? "/"}
                 target="_blank"
                 className="flex gap-2 hover:text-blue-600"
               >

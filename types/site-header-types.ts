@@ -9,12 +9,10 @@ export interface SiteHeaderDataTypes {
   profilePicture: string;
   name: string;
   designation: string;
-  socials: {
-    gitHub: string;
-    facebook: string;
-    linkedIn: string;
-    instagram: string;
-  };
+  gitHub: string;
+  facebook: string;
+  linkedIn: string;
+  instagram: string;
   bioHeadings: string;
   bioTitle: string;
   bioDetails: string;

@@ -11,5 +11,6 @@ export const siteConfig = {
     { id: 4, title: "CONTACT", href: "/contact" },
   ],
   API_BASE_URL: "https://mdnhs.github.io/masum-json/",
+  API_BASE_URL_PRODUCTION: process.env.API_BASE_URL_PRODUCTION,
   MONGODB_URI: process.env.MONGODB_URI,
 };
